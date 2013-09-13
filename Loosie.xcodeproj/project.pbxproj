@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE2EC22817DCA9F1007B157C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2EC22717DCA9F1007B157C /* Cocoa.framework */; };
+		FE2EC23217DCA9F1007B157C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE2EC23017DCA9F1007B157C /* InfoPlist.strings */; };
+		FE2EC23417DCA9F1007B157C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2EC23317DCA9F1007B157C /* main.m */; };
+		FE2EC23817DCA9F1007B157C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FE2EC23617DCA9F1007B157C /* Credits.rtf */; };
+		FE2EC23B17DCA9F1007B157C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2EC23A17DCA9F1007B157C /* AppDelegate.m */; };
+		FE2EC23E17DCA9F1007B157C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE2EC23C17DCA9F1007B157C /* MainMenu.xib */; };
+		FE2EC24517DCAA09007B157C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2EC24417DCAA09007B157C /* AudioToolbox.framework */; };
+		FE2EC24717DCAA70007B157C /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2EC24617DCAA70007B157C /* iTunesLibrary.framework */; };
+		FE3FEDC517DFAE2000DBFBA4 /* ConversionCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3FEDC417DFAE2000DBFBA4 /* ConversionCenter.m */; };
+		FE3FEDC917DFCC1E00DBFBA4 /* PassthroughConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3FEDC817DFCC1E00DBFBA4 /* PassthroughConverter.m */; };
+		FE4A817C17E1F4DE007F3690 /* FLAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4A817B17E1F4DE007F3690 /* FLAC.framework */; };
+		FE4A819B17E1FF66007F3690 /* VorbisConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4A819A17E1FF66007F3690 /* VorbisConverter.m */; };
+		FE4A81A417E20733007F3690 /* Ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4A81A217E20733007F3690 /* Ogg.framework */; };
+		FE4A81A517E20733007F3690 /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4A81A317E20733007F3690 /* Vorbis.framework */; };
+		FE4A81AF17E26269007F3690 /* NSDateFormatter+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4A81AE17E26268007F3690 /* NSDateFormatter+ISO8601.m */; };
+		FE70B63417E1B7FF003FB03A /* ITLibMediaItem+SampleData.m in Sources */ = {isa = PBXBuildFile; fileRef = FE70B63317E1B7FF003FB03A /* ITLibMediaItem+SampleData.m */; };
+		FE70B63717E1CBD4003FB03A /* AudioToolboxUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FE70B63617E1CBD4003FB03A /* AudioToolboxUtils.m */; };
+		FE9B77F817E0777B00EE1EE2 /* URLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9B77F717E0777B00EE1EE2 /* URLHelper.m */; };
+		FE9B77FE17E084D800EE1EE2 /* WaveConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9B77FD17E084D800EE1EE2 /* WaveConverter.m */; };
+		FEAA549B17E0E23A00227365 /* FLACConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAA549A17E0E23A00227365 /* FLACConverter.m */; };
+		FEB0842317DE11F200445E54 /* DefaultOutputFileNamer.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB0842217DE11F200445E54 /* DefaultOutputFileNamer.m */; };
+		FEB0842717DE3C6100445E54 /* Loosie.icns in Resources */ = {isa = PBXBuildFile; fileRef = FEB0842617DE3C6100445E54 /* Loosie.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FE2EC22417DCA9F1007B157C /* Loosie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loosie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE2EC22717DCA9F1007B157C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		FE2EC22A17DCA9F1007B157C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FE2EC22C17DCA9F1007B157C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FE2EC22F17DCA9F1007B157C /* Loosie-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Loosie-Info.plist"; sourceTree = "<group>"; };
+		FE2EC23117DCA9F1007B157C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FE2EC23317DCA9F1007B157C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FE2EC23517DCA9F1007B157C /* Loosie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loosie-Prefix.pch"; sourceTree = "<group>"; };
+		FE2EC23717DCA9F1007B157C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FE2EC23917DCA9F1007B157C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FE2EC23A17DCA9F1007B157C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FE2EC23D17DCA9F1007B157C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FE2EC24417DCAA09007B157C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FE2EC24617DCAA70007B157C /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = /Library/Frameworks/iTunesLibrary.framework; sourceTree = "<absolute>"; };
+		FE3FEDC317DFAE2000DBFBA4 /* ConversionCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionCenter.h; sourceTree = "<group>"; };
+		FE3FEDC417DFAE2000DBFBA4 /* ConversionCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversionCenter.m; sourceTree = "<group>"; };
+		FE3FEDC617DFBF9600DBFBA4 /* Converter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
+		FE3FEDC717DFCC1E00DBFBA4 /* PassthroughConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughConverter.h; sourceTree = "<group>"; };
+		FE3FEDC817DFCC1E00DBFBA4 /* PassthroughConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassthroughConverter.m; sourceTree = "<group>"; };
+		FE4A817B17E1F4DE007F3690 /* FLAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLAC.framework; sourceTree = "<group>"; };
+		FE4A819917E1FF66007F3690 /* VorbisConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VorbisConverter.h; sourceTree = "<group>"; };
+		FE4A819A17E1FF66007F3690 /* VorbisConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VorbisConverter.m; sourceTree = "<group>"; };
+		FE4A81A217E20733007F3690 /* Ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Ogg.framework; sourceTree = "<group>"; };
+		FE4A81A317E20733007F3690 /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Vorbis.framework; sourceTree = "<group>"; };
+		FE4A81AD17E26268007F3690 /* NSDateFormatter+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+ISO8601.h"; sourceTree = "<group>"; };
+		FE4A81AE17E26268007F3690 /* NSDateFormatter+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ISO8601.m"; sourceTree = "<group>"; };
+		FE70B63217E1B7FF003FB03A /* ITLibMediaItem+SampleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITLibMediaItem+SampleData.h"; sourceTree = "<group>"; };
+		FE70B63317E1B7FF003FB03A /* ITLibMediaItem+SampleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITLibMediaItem+SampleData.m"; sourceTree = "<group>"; };
+		FE70B63517E1CA93003FB03A /* AudioToolboxUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioToolboxUtils.h; sourceTree = "<group>"; };
+		FE70B63617E1CBD4003FB03A /* AudioToolboxUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioToolboxUtils.m; sourceTree = "<group>"; };
+		FE9B77F517E0734800EE1EE2 /* OutputFileNamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutputFileNamer.h; sourceTree = "<group>"; };
+		FE9B77F617E0777B00EE1EE2 /* URLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLHelper.h; sourceTree = "<group>"; };
+		FE9B77F717E0777B00EE1EE2 /* URLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLHelper.m; sourceTree = "<group>"; };
+		FE9B77FC17E084D800EE1EE2 /* WaveConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveConverter.h; sourceTree = "<group>"; };
+		FE9B77FD17E084D800EE1EE2 /* WaveConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveConverter.m; sourceTree = "<group>"; };
+		FEAA549917E0E23A00227365 /* FLACConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLACConverter.h; sourceTree = "<group>"; };
+		FEAA549A17E0E23A00227365 /* FLACConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLACConverter.m; sourceTree = "<group>"; };
+		FEB0842017DDE8AC00445E54 /* Loosie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Loosie.entitlements; sourceTree = "<group>"; };
+		FEB0842117DE11F200445E54 /* DefaultOutputFileNamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOutputFileNamer.h; sourceTree = "<group>"; };
+		FEB0842217DE11F200445E54 /* DefaultOutputFileNamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOutputFileNamer.m; sourceTree = "<group>"; };
+		FEB0842617DE3C6100445E54 /* Loosie.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Loosie.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE2EC22117DCA9F1007B157C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE2EC24717DCAA70007B157C /* iTunesLibrary.framework in Frameworks */,
+				FE2EC24517DCAA09007B157C /* AudioToolbox.framework in Frameworks */,
+				FE2EC22817DCA9F1007B157C /* Cocoa.framework in Frameworks */,
+				FE4A817C17E1F4DE007F3690 /* FLAC.framework in Frameworks */,
+				FE4A81A417E20733007F3690 /* Ogg.framework in Frameworks */,
+				FE4A81A517E20733007F3690 /* Vorbis.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE2EC21B17DCA9F1007B157C = {
+			isa = PBXGroup;
+			children = (
+				FEB0842617DE3C6100445E54 /* Loosie.icns */,
+				FE2EC22D17DCA9F1007B157C /* Loosie */,
+				FE2EC22617DCA9F1007B157C /* Frameworks */,
+				FE2EC22517DCA9F1007B157C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE2EC22517DCA9F1007B157C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE2EC22417DCA9F1007B157C /* Loosie.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE2EC22617DCA9F1007B157C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE2EC22717DCA9F1007B157C /* Cocoa.framework */,
+				FE2EC22917DCA9F1007B157C /* Other Frameworks */,
+				FE4A817A17E1F3C5007F3690 /* External Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE2EC22917DCA9F1007B157C /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE2EC24617DCAA70007B157C /* iTunesLibrary.framework */,
+				FE2EC24417DCAA09007B157C /* AudioToolbox.framework */,
+				FE2EC22A17DCA9F1007B157C /* AppKit.framework */,
+				FE2EC22C17DCA9F1007B157C /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		FE2EC22D17DCA9F1007B157C /* Loosie */ = {
+			isa = PBXGroup;
+			children = (
+				FE9B77F917E0803300EE1EE2 /* File Naming */,
+				FE9B77FA17E0806400EE1EE2 /* Converters */,
+				FE9B77FB17E0809700EE1EE2 /* Helpers */,
+				FE2EC23917DCA9F1007B157C /* AppDelegate.h */,
+				FE2EC23A17DCA9F1007B157C /* AppDelegate.m */,
+				FE3FEDC317DFAE2000DBFBA4 /* ConversionCenter.h */,
+				FE3FEDC417DFAE2000DBFBA4 /* ConversionCenter.m */,
+				FE2EC23C17DCA9F1007B157C /* MainMenu.xib */,
+				FE2EC22E17DCA9F1007B157C /* Supporting Files */,
+			);
+			path = Loosie;
+			sourceTree = "<group>";
+		};
+		FE2EC22E17DCA9F1007B157C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FEB0842017DDE8AC00445E54 /* Loosie.entitlements */,
+				FE2EC22F17DCA9F1007B157C /* Loosie-Info.plist */,
+				FE2EC23017DCA9F1007B157C /* InfoPlist.strings */,
+				FE2EC23317DCA9F1007B157C /* main.m */,
+				FE2EC23517DCA9F1007B157C /* Loosie-Prefix.pch */,
+				FE2EC23617DCA9F1007B157C /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE4A817A17E1F3C5007F3690 /* External Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE4A81A217E20733007F3690 /* Ogg.framework */,
+				FE4A81A317E20733007F3690 /* Vorbis.framework */,
+				FE4A817B17E1F4DE007F3690 /* FLAC.framework */,
+			);
+			name = "External Frameworks";
+			sourceTree = "<group>";
+		};
+		FE9B77F917E0803300EE1EE2 /* File Naming */ = {
+			isa = PBXGroup;
+			children = (
+				FE9B77F517E0734800EE1EE2 /* OutputFileNamer.h */,
+				FEB0842117DE11F200445E54 /* DefaultOutputFileNamer.h */,
+				FEB0842217DE11F200445E54 /* DefaultOutputFileNamer.m */,
+			);
+			name = "File Naming";
+			sourceTree = "<group>";
+		};
+		FE9B77FA17E0806400EE1EE2 /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				FE3FEDC617DFBF9600DBFBA4 /* Converter.h */,
+				FE3FEDC717DFCC1E00DBFBA4 /* PassthroughConverter.h */,
+				FE3FEDC817DFCC1E00DBFBA4 /* PassthroughConverter.m */,
+				FE9B77FC17E084D800EE1EE2 /* WaveConverter.h */,
+				FE9B77FD17E084D800EE1EE2 /* WaveConverter.m */,
+				FEAA549917E0E23A00227365 /* FLACConverter.h */,
+				FEAA549A17E0E23A00227365 /* FLACConverter.m */,
+				FE4A819917E1FF66007F3690 /* VorbisConverter.h */,
+				FE4A819A17E1FF66007F3690 /* VorbisConverter.m */,
+			);
+			name = Converters;
+			sourceTree = "<group>";
+		};
+		FE9B77FB17E0809700EE1EE2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FE9B77F617E0777B00EE1EE2 /* URLHelper.h */,
+				FE9B77F717E0777B00EE1EE2 /* URLHelper.m */,
+				FE4A81AD17E26268007F3690 /* NSDateFormatter+ISO8601.h */,
+				FE4A81AE17E26268007F3690 /* NSDateFormatter+ISO8601.m */,
+				FE70B63217E1B7FF003FB03A /* ITLibMediaItem+SampleData.h */,
+				FE70B63317E1B7FF003FB03A /* ITLibMediaItem+SampleData.m */,
+				FE70B63517E1CA93003FB03A /* AudioToolboxUtils.h */,
+				FE70B63617E1CBD4003FB03A /* AudioToolboxUtils.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE2EC22317DCA9F1007B157C /* Loosie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE2EC24117DCA9F1007B157C /* Build configuration list for PBXNativeTarget "Loosie" */;
+			buildPhases = (
+				FE2EC22017DCA9F1007B157C /* Sources */,
+				FE2EC22117DCA9F1007B157C /* Frameworks */,
+				FE2EC22217DCA9F1007B157C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Loosie;
+			productName = Loosie;
+			productReference = FE2EC22417DCA9F1007B157C /* Loosie.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE2EC21C17DCA9F1007B157C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = "";
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Shay Aviv";
+			};
+			buildConfigurationList = FE2EC21F17DCA9F1007B157C /* Build configuration list for PBXProject "Loosie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FE2EC21B17DCA9F1007B157C;
+			productRefGroup = FE2EC22517DCA9F1007B157C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE2EC22317DCA9F1007B157C /* Loosie */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE2EC22217DCA9F1007B157C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE2EC23217DCA9F1007B157C /* InfoPlist.strings in Resources */,
+				FE2EC23817DCA9F1007B157C /* Credits.rtf in Resources */,
+				FE2EC23E17DCA9F1007B157C /* MainMenu.xib in Resources */,
+				FEB0842717DE3C6100445E54 /* Loosie.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE2EC22017DCA9F1007B157C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE2EC23417DCA9F1007B157C /* main.m in Sources */,
+				FE2EC23B17DCA9F1007B157C /* AppDelegate.m in Sources */,
+				FEB0842317DE11F200445E54 /* DefaultOutputFileNamer.m in Sources */,
+				FE3FEDC517DFAE2000DBFBA4 /* ConversionCenter.m in Sources */,
+				FE3FEDC917DFCC1E00DBFBA4 /* PassthroughConverter.m in Sources */,
+				FE9B77F817E0777B00EE1EE2 /* URLHelper.m in Sources */,
+				FE9B77FE17E084D800EE1EE2 /* WaveConverter.m in Sources */,
+				FEAA549B17E0E23A00227365 /* FLACConverter.m in Sources */,
+				FE70B63417E1B7FF003FB03A /* ITLibMediaItem+SampleData.m in Sources */,
+				FE70B63717E1CBD4003FB03A /* AudioToolboxUtils.m in Sources */,
+				FE4A819B17E1FF66007F3690 /* VorbisConverter.m in Sources */,
+				FE4A81AF17E26269007F3690 /* NSDateFormatter+ISO8601.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FE2EC23017DCA9F1007B157C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE2EC23117DCA9F1007B157C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FE2EC23617DCA9F1007B157C /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE2EC23717DCA9F1007B157C /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		FE2EC23C17DCA9F1007B157C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE2EC23D17DCA9F1007B157C /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FE2EC23F17DCA9F1007B157C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FE2EC24017DCA9F1007B157C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FE2EC24217DCA9F1007B157C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Loosie/Loosie.entitlements;
+				CODE_SIGN_IDENTITY = "Shay Aviv";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Loosie/Loosie-Prefix.pch";
+				INFOPLIST_FILE = "Loosie/Loosie-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FE2EC24317DCA9F1007B157C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Loosie/Loosie.entitlements;
+				CODE_SIGN_IDENTITY = "Shay Aviv";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Loosie/Loosie-Prefix.pch";
+				INFOPLIST_FILE = "Loosie/Loosie-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE2EC21F17DCA9F1007B157C /* Build configuration list for PBXProject "Loosie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE2EC23F17DCA9F1007B157C /* Debug */,
+				FE2EC24017DCA9F1007B157C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE2EC24117DCA9F1007B157C /* Build configuration list for PBXNativeTarget "Loosie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE2EC24217DCA9F1007B157C /* Debug */,
+				FE2EC24317DCA9F1007B157C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FE2EC21C17DCA9F1007B157C /* Project object */;
+}
