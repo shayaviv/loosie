@@ -256,6 +256,7 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
      libvorbis.  They're never freed or manipulated directly */
     
     ExtAudioFileDispose(infile);
+    fclose(outfile);
     return YES;
 }
 
