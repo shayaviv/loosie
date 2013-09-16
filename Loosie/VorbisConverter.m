@@ -132,11 +132,11 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
         AddStringFieldToComment(&vc, "ALBUMSORT",       item.album.sortTitle);
         AddStringFieldToComment(&vc, "ALBUMARTISTSORT", item.album.sortAlbumArtist);
         AddStringFieldToComment(&vc, "COMPOSERSORT",    item.sortComposer);
+        if (item.releaseDate)
+            AddStringFieldToComment(&vc, "DATE", [[NSDateFormatter iso8601] stringFromDate:item.releaseDate]);
+        else
+            AddNumberFieldToComment(&vc, "DATE", item.year);
     }
-    if (item.releaseDate)
-        AddStringFieldToComment(&vc, "DATE", [[NSDateFormatter iso8601] stringFromDate:item.releaseDate]);
-    else
-        AddNumberFieldToComment(&vc, "DATE", item.year);
     
     /* set up the analysis state and auxiliary encoding storage */
     vorbis_analysis_init(&vd, &vi);

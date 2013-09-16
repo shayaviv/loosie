@@ -85,11 +85,11 @@ static NSError* TranslateEncoderStateError(NSString *description, FLAC__StreamEn
         AddStringFieldToComment(metadata[0], "ALBUMSORT",       item.album.sortTitle);
         AddStringFieldToComment(metadata[0], "ALBUMARTISTSORT", item.album.sortAlbumArtist);
         AddStringFieldToComment(metadata[0], "COMPOSERSORT",    item.sortComposer);
+        if (item.releaseDate)
+            AddStringFieldToComment(metadata[0], "DATE", [[NSDateFormatter iso8601] stringFromDate:item.releaseDate]);
+        else
+            AddNumberFieldToComment(metadata[0], "DATE", item.year);
     }
-    if (item.releaseDate)
-        AddStringFieldToComment(metadata[0], "DATE", [[NSDateFormatter iso8601] stringFromDate:item.releaseDate]);
-    else
-        AddNumberFieldToComment(metadata[0], "DATE", item.year);
     
     metadata[1] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_PADDING);
     metadata[1]->length = 4096; /* set the padding length */
