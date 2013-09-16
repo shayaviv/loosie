@@ -20,13 +20,11 @@
 
 static const int kProgressSteps = 256;
 
-@implementation AppDelegate
-{
+@implementation AppDelegate {
     double _progress;
 }
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {       
         self.dockTile = [NSApp dockTile];

@@ -29,8 +29,7 @@ static BOOL AddNumberFieldToComment(FLAC__StreamMetadata *comment, const char *f
 static NSError* TranslateEncoderInitError(FLAC__StreamEncoderInitStatus status);
 static NSError* TranslateEncoderStateError(NSString *description, FLAC__StreamEncoder *encoder);
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         self.compressionLevel = 5;

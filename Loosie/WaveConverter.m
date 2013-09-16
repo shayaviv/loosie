@@ -47,8 +47,7 @@ static const UInt32 kBufferSize = 4096;
     AudioBufferList fillBufList = { 1, { streamDesc.mChannelsPerFrame, kBufferSize, srcBuffer }};
     const UInt32 framesToBuffer = kBufferSize / streamDesc.mBytesPerFrame;
     
-	while (1)
-	{              
+	while (1) {              
         UInt32 numFrames = framesToBuffer;
         if (HasError(ExtAudioFileRead(infile, &numFrames, &fillBufList), error))
             goto error;

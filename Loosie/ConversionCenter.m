@@ -21,8 +21,7 @@
 
 @implementation ConversionCenter
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         PassthroughConverter *passthrough = [[PassthroughConverter alloc] init];

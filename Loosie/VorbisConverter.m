@@ -26,8 +26,7 @@ static const UInt32 kSamplesToBuffer = 2048;
 static BOOL AddStringFieldToComment(vorbis_comment *comment, const char *fieldName, NSString *value);
 static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldName, NSUInteger value);
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         self.VBRQuality = 0.4;

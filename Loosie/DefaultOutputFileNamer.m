@@ -22,8 +22,7 @@
 
 @implementation DefaultOutputFileNamer
 
-- (id)init
-{
+- (id)init {
     return [self initWithLibrary:[ITLibrary libraryWithAPIVersion:@"1.0" error:nil]];
 }
 
