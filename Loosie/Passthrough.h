@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Converter.h"
+#import "Encoder.h"
 
-@interface PassthroughConverter : NSObject <Converter>
+@interface Passthrough : NSObject <Encoder>
 
 @end

@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Converter.h"
+#import "Encoder.h"
 
-@interface WaveConverter : NSObject <Converter>
+@interface WaveEncoder : NSObject <Encoder>
 
 @end

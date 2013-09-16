@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Shay Aviv. All rights reserved.
 //
 
-#import "FLACConverter.h"
+#import "FLACEncoder.h"
 
 #import <AudioToolbox/AudioToolbox.h>
 #import <iTunesLibrary/ITLibMediaItem.h>
@@ -20,7 +20,7 @@
 #include <FLAC/metadata.h>
 #include <FLAC/stream_encoder.h>
 
-@implementation FLACConverter
+@implementation FLACEncoder
 
 static const UInt32 kSamplesToBuffer = 2048;
 
@@ -38,7 +38,7 @@ static NSError* TranslateEncoderStateError(NSString *description, FLAC__StreamEn
     return self;
 }
 
-- (BOOL)convert:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
+- (BOOL)encode:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
     ExtAudioFileRef infile;
     if (HasError(ExtAudioFileOpenURL((__bridge CFURLRef)item.location, &infile), error))
         return NO;

@@ -10,8 +10,8 @@
 
 @class ITLibMediaItem;
 
-@protocol Converter <NSObject>
+@protocol Encoder <NSObject>
 
-- (BOOL)convert:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error;
+- (BOOL)encode:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error;
 
 @end

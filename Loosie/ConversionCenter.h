@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Converter.h"
+#import "Encoder.h"
 
 @class ITLibMediaItem;
 
 @interface ConversionCenter : NSObject
 
-- (id <Converter>)converterForMediaItem:(ITLibMediaItem *)item;
+- (id <Encoder>)encoderForMediaItem:(ITLibMediaItem *)item;
 
 @end

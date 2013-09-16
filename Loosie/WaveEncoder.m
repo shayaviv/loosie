@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Shay Aviv. All rights reserved.
 //
 
-#import "WaveConverter.h"
+#import "WaveEncoder.h"
 
 #import <AudioToolbox/AudioToolbox.h>
 #import <iTunesLibrary/ITLibMediaItem.h>
@@ -14,11 +14,11 @@
 #import "ITLibMediaItem+SampleData.h"
 #import "AudioToolboxUtils.h"
 
-@implementation WaveConverter
+@implementation WaveEncoder
 
 static const UInt32 kBufferSize = 4096;
 
-- (BOOL)convert:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
+- (BOOL)encode:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
     BOOL success = NO;
     
     ExtAudioFileRef infile;

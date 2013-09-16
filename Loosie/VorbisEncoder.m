@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Shay Aviv. All rights reserved.
 //
 
-#import "VorbisConverter.h"
+#import "VorbisEncoder.h"
 
 #import <AudioToolbox/AudioToolbox.h>
 #import <iTunesLibrary/ITLibMediaItem.h>
@@ -19,7 +19,7 @@
 
 #include <vorbis/vorbisenc.h>
 
-@implementation VorbisConverter
+@implementation VorbisEncoder
 
 static const UInt32 kSamplesToBuffer = 2048;
 
@@ -35,7 +35,7 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
     return self;
 }
 
-- (BOOL)convert:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
+- (BOOL)encode:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
     ExtAudioFileRef infile;
     if (HasError(ExtAudioFileOpenURL((__bridge CFURLRef)item.location, &infile), error))
         return NO;

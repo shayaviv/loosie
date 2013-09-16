@@ -92,12 +92,12 @@ static const int kProgressSteps = 256;
     
     for (ITLibMediaItem *item in selectedPlaylist.items)
         [self.queue addOperationWithBlock:^{
-            id <Converter> converter = [self.conversionCenter converterForMediaItem:item];
-            if (converter) {
+            id <Encoder> encoder = [self.conversionCenter encoderForMediaItem:item];
+            if (encoder) {
                 NSURL* outputURL = [self.fileNamer URLWithoutExtensionForMediaItem:item];
                 if ([[NSFileManager defaultManager] createDirectoryAtURL:[outputURL URLByDeletingLastPathComponent]
                                              withIntermediateDirectories:YES attributes:nil error:nil]
-                    && [converter convert:item outputURL:outputURL error:nil])
+                    && [encoder encode:item outputURL:outputURL error:nil])
                     OSAtomicIncrement32(&convertedCount);
                 else
                     OSAtomicIncrement32(&errorCount);

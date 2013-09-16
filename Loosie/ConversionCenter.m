@@ -10,13 +10,13 @@
 
 #import <iTunesLibrary/ITLibMediaItem.h>
 
-#import "PassthroughConverter.h"
-#import "WaveConverter.h"
-#import "FLACConverter.h"
-#import "VorbisConverter.h"
+#import "Passthrough.h"
+#import "WaveEncoder.h"
+#import "FLACEncoder.h"
+#import "VorbisEncoder.h"
 
 @interface ConversionCenter ()
-@property (strong, nonatomic) NSDictionary *converterByKind;
+@property (strong, nonatomic) NSDictionary *encoderByKind;
 @end
 
 @implementation ConversionCenter
@@ -24,16 +24,16 @@
 - (id)init {
     self = [super init];
     if (self) {
-        PassthroughConverter *passthrough = [[PassthroughConverter alloc] init];
+        Passthrough *passthrough = [[Passthrough alloc] init];
         //WaveConverter *wave = [[WaveConverter alloc] init];
-        FLACConverter *flac = [[FLACConverter alloc] init];
-        VorbisConverter *vorbis = [[VorbisConverter alloc] init];
+        FLACEncoder *flac = [[FLACEncoder alloc] init];
+        VorbisEncoder *vorbis = [[VorbisEncoder alloc] init];
         
-        id <Converter> lossless = flac;
-        id <Converter> mp3 = passthrough;
-        id <Converter> aac = vorbis;
+        id <Encoder> lossless = flac;
+        id <Encoder> mp3 = passthrough;
+        id <Encoder> aac = vorbis;
         
-        self.converterByKind = [NSDictionary dictionaryWithObjectsAndKeys:
+        self.encoderByKind = [NSDictionary dictionaryWithObjectsAndKeys:
                                 lossless, @"Apple Lossless audio file",
                                 lossless, @"WAV audio file",
                                 lossless, @"AIFF audio file",
@@ -44,9 +44,9 @@
     return self;
 }
 
-- (id <Converter>)converterForMediaItem:(ITLibMediaItem *)item {
+- (id <Encoder>)encoderForMediaItem:(ITLibMediaItem *)item {
     if (item.mediaKind == ITLibMediaItemMediaKindSong && !item.isDRMProtected)
-        return self.converterByKind[item.kind];
+        return self.encoderByKind[item.kind];
     else
         return nil;
 }

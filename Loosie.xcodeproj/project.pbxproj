@@ -16,17 +16,17 @@
 		FE2EC24517DCAA09007B157C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2EC24417DCAA09007B157C /* AudioToolbox.framework */; };
 		FE2EC24717DCAA70007B157C /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2EC24617DCAA70007B157C /* iTunesLibrary.framework */; };
 		FE3FEDC517DFAE2000DBFBA4 /* ConversionCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3FEDC417DFAE2000DBFBA4 /* ConversionCenter.m */; };
-		FE3FEDC917DFCC1E00DBFBA4 /* PassthroughConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3FEDC817DFCC1E00DBFBA4 /* PassthroughConverter.m */; };
+		FE3FEDC917DFCC1E00DBFBA4 /* Passthrough.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3FEDC817DFCC1E00DBFBA4 /* Passthrough.m */; };
 		FE4A817C17E1F4DE007F3690 /* FLAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4A817B17E1F4DE007F3690 /* FLAC.framework */; };
-		FE4A819B17E1FF66007F3690 /* VorbisConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4A819A17E1FF66007F3690 /* VorbisConverter.m */; };
+		FE4A819B17E1FF66007F3690 /* VorbisEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4A819A17E1FF66007F3690 /* VorbisEncoder.m */; };
 		FE4A81A417E20733007F3690 /* Ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4A81A217E20733007F3690 /* Ogg.framework */; };
 		FE4A81A517E20733007F3690 /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4A81A317E20733007F3690 /* Vorbis.framework */; };
 		FE4A81AF17E26269007F3690 /* NSDateFormatter+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4A81AE17E26268007F3690 /* NSDateFormatter+ISO8601.m */; };
 		FE70B63417E1B7FF003FB03A /* ITLibMediaItem+SampleData.m in Sources */ = {isa = PBXBuildFile; fileRef = FE70B63317E1B7FF003FB03A /* ITLibMediaItem+SampleData.m */; };
 		FE70B63717E1CBD4003FB03A /* AudioToolboxUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FE70B63617E1CBD4003FB03A /* AudioToolboxUtils.m */; };
 		FE9B77F817E0777B00EE1EE2 /* URLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9B77F717E0777B00EE1EE2 /* URLHelper.m */; };
-		FE9B77FE17E084D800EE1EE2 /* WaveConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9B77FD17E084D800EE1EE2 /* WaveConverter.m */; };
-		FEAA549B17E0E23A00227365 /* FLACConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAA549A17E0E23A00227365 /* FLACConverter.m */; };
+		FE9B77FE17E084D800EE1EE2 /* WaveEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9B77FD17E084D800EE1EE2 /* WaveEncoder.m */; };
+		FEAA549B17E0E23A00227365 /* FLACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAA549A17E0E23A00227365 /* FLACEncoder.m */; };
 		FEB0842317DE11F200445E54 /* DefaultOutputFileNamer.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB0842217DE11F200445E54 /* DefaultOutputFileNamer.m */; };
 		FEB0842717DE3C6100445E54 /* Loosie.icns in Resources */ = {isa = PBXBuildFile; fileRef = FEB0842617DE3C6100445E54 /* Loosie.icns */; };
 /* End PBXBuildFile section */
@@ -48,12 +48,12 @@
 		FE2EC24617DCAA70007B157C /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = /Library/Frameworks/iTunesLibrary.framework; sourceTree = "<absolute>"; };
 		FE3FEDC317DFAE2000DBFBA4 /* ConversionCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionCenter.h; sourceTree = "<group>"; };
 		FE3FEDC417DFAE2000DBFBA4 /* ConversionCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversionCenter.m; sourceTree = "<group>"; };
-		FE3FEDC617DFBF9600DBFBA4 /* Converter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
-		FE3FEDC717DFCC1E00DBFBA4 /* PassthroughConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughConverter.h; sourceTree = "<group>"; };
-		FE3FEDC817DFCC1E00DBFBA4 /* PassthroughConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassthroughConverter.m; sourceTree = "<group>"; };
+		FE3FEDC617DFBF9600DBFBA4 /* Encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Encoder.h; sourceTree = "<group>"; };
+		FE3FEDC717DFCC1E00DBFBA4 /* Passthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passthrough.h; sourceTree = "<group>"; };
+		FE3FEDC817DFCC1E00DBFBA4 /* Passthrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passthrough.m; sourceTree = "<group>"; };
 		FE4A817B17E1F4DE007F3690 /* FLAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLAC.framework; sourceTree = "<group>"; };
-		FE4A819917E1FF66007F3690 /* VorbisConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VorbisConverter.h; sourceTree = "<group>"; };
-		FE4A819A17E1FF66007F3690 /* VorbisConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VorbisConverter.m; sourceTree = "<group>"; };
+		FE4A819917E1FF66007F3690 /* VorbisEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VorbisEncoder.h; sourceTree = "<group>"; };
+		FE4A819A17E1FF66007F3690 /* VorbisEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VorbisEncoder.m; sourceTree = "<group>"; };
 		FE4A81A217E20733007F3690 /* Ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Ogg.framework; sourceTree = "<group>"; };
 		FE4A81A317E20733007F3690 /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Vorbis.framework; sourceTree = "<group>"; };
 		FE4A81AD17E26268007F3690 /* NSDateFormatter+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+ISO8601.h"; sourceTree = "<group>"; };
@@ -65,10 +65,10 @@
 		FE9B77F517E0734800EE1EE2 /* OutputFileNamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutputFileNamer.h; sourceTree = "<group>"; };
 		FE9B77F617E0777B00EE1EE2 /* URLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLHelper.h; sourceTree = "<group>"; };
 		FE9B77F717E0777B00EE1EE2 /* URLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLHelper.m; sourceTree = "<group>"; };
-		FE9B77FC17E084D800EE1EE2 /* WaveConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveConverter.h; sourceTree = "<group>"; };
-		FE9B77FD17E084D800EE1EE2 /* WaveConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveConverter.m; sourceTree = "<group>"; };
-		FEAA549917E0E23A00227365 /* FLACConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLACConverter.h; sourceTree = "<group>"; };
-		FEAA549A17E0E23A00227365 /* FLACConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLACConverter.m; sourceTree = "<group>"; };
+		FE9B77FC17E084D800EE1EE2 /* WaveEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveEncoder.h; sourceTree = "<group>"; };
+		FE9B77FD17E084D800EE1EE2 /* WaveEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveEncoder.m; sourceTree = "<group>"; };
+		FEAA549917E0E23A00227365 /* FLACEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLACEncoder.h; sourceTree = "<group>"; };
+		FEAA549A17E0E23A00227365 /* FLACEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLACEncoder.m; sourceTree = "<group>"; };
 		FEB0842017DDE8AC00445E54 /* Loosie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Loosie.entitlements; sourceTree = "<group>"; };
 		FEB0842117DE11F200445E54 /* DefaultOutputFileNamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOutputFileNamer.h; sourceTree = "<group>"; };
 		FEB0842217DE11F200445E54 /* DefaultOutputFileNamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOutputFileNamer.m; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				FE9B77F917E0803300EE1EE2 /* File Naming */,
-				FE9B77FA17E0806400EE1EE2 /* Converters */,
+				FE9B77FA17E0806400EE1EE2 /* Encoders */,
 				FE9B77FB17E0809700EE1EE2 /* Helpers */,
 				FE2EC23917DCA9F1007B157C /* AppDelegate.h */,
 				FE2EC23A17DCA9F1007B157C /* AppDelegate.m */,
@@ -180,20 +180,20 @@
 			name = "File Naming";
 			sourceTree = "<group>";
 		};
-		FE9B77FA17E0806400EE1EE2 /* Converters */ = {
+		FE9B77FA17E0806400EE1EE2 /* Encoders */ = {
 			isa = PBXGroup;
 			children = (
-				FE3FEDC617DFBF9600DBFBA4 /* Converter.h */,
-				FE3FEDC717DFCC1E00DBFBA4 /* PassthroughConverter.h */,
-				FE3FEDC817DFCC1E00DBFBA4 /* PassthroughConverter.m */,
-				FE9B77FC17E084D800EE1EE2 /* WaveConverter.h */,
-				FE9B77FD17E084D800EE1EE2 /* WaveConverter.m */,
-				FEAA549917E0E23A00227365 /* FLACConverter.h */,
-				FEAA549A17E0E23A00227365 /* FLACConverter.m */,
-				FE4A819917E1FF66007F3690 /* VorbisConverter.h */,
-				FE4A819A17E1FF66007F3690 /* VorbisConverter.m */,
+				FE3FEDC617DFBF9600DBFBA4 /* Encoder.h */,
+				FE3FEDC717DFCC1E00DBFBA4 /* Passthrough.h */,
+				FE3FEDC817DFCC1E00DBFBA4 /* Passthrough.m */,
+				FE9B77FC17E084D800EE1EE2 /* WaveEncoder.h */,
+				FE9B77FD17E084D800EE1EE2 /* WaveEncoder.m */,
+				FEAA549917E0E23A00227365 /* FLACEncoder.h */,
+				FEAA549A17E0E23A00227365 /* FLACEncoder.m */,
+				FE4A819917E1FF66007F3690 /* VorbisEncoder.h */,
+				FE4A819A17E1FF66007F3690 /* VorbisEncoder.m */,
 			);
-			name = Converters;
+			name = Encoders;
 			sourceTree = "<group>";
 		};
 		FE9B77FB17E0809700EE1EE2 /* Helpers */ = {
@@ -281,13 +281,13 @@
 				FE2EC23B17DCA9F1007B157C /* AppDelegate.m in Sources */,
 				FEB0842317DE11F200445E54 /* DefaultOutputFileNamer.m in Sources */,
 				FE3FEDC517DFAE2000DBFBA4 /* ConversionCenter.m in Sources */,
-				FE3FEDC917DFCC1E00DBFBA4 /* PassthroughConverter.m in Sources */,
+				FE3FEDC917DFCC1E00DBFBA4 /* Passthrough.m in Sources */,
 				FE9B77F817E0777B00EE1EE2 /* URLHelper.m in Sources */,
-				FE9B77FE17E084D800EE1EE2 /* WaveConverter.m in Sources */,
-				FEAA549B17E0E23A00227365 /* FLACConverter.m in Sources */,
+				FE9B77FE17E084D800EE1EE2 /* WaveEncoder.m in Sources */,
+				FEAA549B17E0E23A00227365 /* FLACEncoder.m in Sources */,
 				FE70B63417E1B7FF003FB03A /* ITLibMediaItem+SampleData.m in Sources */,
 				FE70B63717E1CBD4003FB03A /* AudioToolboxUtils.m in Sources */,
-				FE4A819B17E1FF66007F3690 /* VorbisConverter.m in Sources */,
+				FE4A819B17E1FF66007F3690 /* VorbisEncoder.m in Sources */,
 				FE4A81AF17E26269007F3690 /* NSDateFormatter+ISO8601.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
