@@ -10,13 +10,6 @@
 
 #import "Encoder.h"
 
-typedef enum {
-    PassthroughEncoderType = 0,
-    VorbisEncoderType = 1,
-    FLACEncoderType = 2,
-    WaveEncoderType = 3
-} EncoderType;
-
 @class ITLibMediaItem;
 
 @interface ConversionCenter : NSObject

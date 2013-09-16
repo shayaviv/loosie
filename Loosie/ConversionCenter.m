@@ -33,25 +33,29 @@
     return self;
 }
 
+VorbisEncoder *CreateVorbisEncoder() {
+    VorbisEncoder *vorbisEncoder = [[VorbisEncoder alloc] init];
+    vorbisEncoder.includeAdvancedMetadata = [[NSUserDefaults standardUserDefaults] boolForKey:@"IncludeAdvancedMetadata"];
+    return vorbisEncoder;
+}
+
+FLACEncoder *CreateFLACEncoder() {
+    FLACEncoder *flacEncoder = [[FLACEncoder alloc] init];
+    flacEncoder.includeAdvancedMetadata = [[NSUserDefaults standardUserDefaults] boolForKey:@"IncludeAdvancedMetadata"];
+    return flacEncoder;
+}
+
 - (id <Encoder>)encoderForMediaItem:(ITLibMediaItem *)item {
     if (item.mediaKind == ITLibMediaItemMediaKindSong && !item.isDRMProtected) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        switch([defaults integerForKey:defaultsKeyByKind[item.kind]]) {
-            case PassthroughEncoderType:
+        NSString *encoderTypeKey = defaultsKeyByKind[item.kind];
+        switch([[NSUserDefaults standardUserDefaults] integerForKey:encoderTypeKey]) {
+            case 0:
                 return [[Passthrough alloc] init];
-            case VorbisEncoderType:
-            {
-                VorbisEncoder *vorbisEncoder = [[VorbisEncoder alloc] init];
-                vorbisEncoder.includeAdvancedMetadata = [defaults boolForKey:@"IncludeAdvancedMetadata"];
-                return vorbisEncoder;
-            }
-            case FLACEncoderType:
-            {
-                FLACEncoder *flacEncoder = [[FLACEncoder alloc] init];
-                flacEncoder.includeAdvancedMetadata = [defaults boolForKey:@"IncludeAdvancedMetadata"];
-                return flacEncoder;
-            }
-            case WaveEncoderType:
+            case 1:
+                return CreateVorbisEncoder();
+            case 2:
+                return CreateFLACEncoder();
+            case 3:
                 return [[WaveEncoder alloc] init];
         }
     }
