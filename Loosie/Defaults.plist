@@ -5,7 +5,7 @@
 	<key>LosslessTargetEncoder</key>
 	<integer>2</integer>
 	<key>AACTargetEncoder</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>MP3TargetEncoder</key>
 	<integer>0</integer>
 	<key>IncludeAdvancedMetadata</key>

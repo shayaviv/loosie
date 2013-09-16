@@ -32,7 +32,23 @@
 		FEAA549B17E0E23A00227365 /* FLACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAA549A17E0E23A00227365 /* FLACEncoder.m */; };
 		FEB0842317DE11F200445E54 /* DefaultOutputFileNamer.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB0842217DE11F200445E54 /* DefaultOutputFileNamer.m */; };
 		FEB0842717DE3C6100445E54 /* Loosie.icns in Resources */ = {isa = PBXBuildFile; fileRef = FEB0842617DE3C6100445E54 /* Loosie.icns */; };
+		FED6899F17E7C270005ACA5C /* MP3Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FED6899E17E7C270005ACA5C /* MP3Encoder.m */; };
+		FED689A117E7CECE005ACA5C /* LAME.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED689A017E7CECE005ACA5C /* LAME.framework */; };
+		FED689A317E7CF59005ACA5C /* LAME.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FED689A017E7CECE005ACA5C /* LAME.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FED689A217E7CF32005ACA5C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FED689A317E7CF59005ACA5C /* LAME.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FE06834017E740E200BF3E0A /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
@@ -80,6 +96,9 @@
 		FEB0842117DE11F200445E54 /* DefaultOutputFileNamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOutputFileNamer.h; sourceTree = "<group>"; };
 		FEB0842217DE11F200445E54 /* DefaultOutputFileNamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOutputFileNamer.m; sourceTree = "<group>"; };
 		FEB0842617DE3C6100445E54 /* Loosie.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Loosie.icns; sourceTree = "<group>"; };
+		FED6899D17E7C270005ACA5C /* MP3Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MP3Encoder.h; sourceTree = "<group>"; };
+		FED6899E17E7C270005ACA5C /* MP3Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MP3Encoder.m; sourceTree = "<group>"; };
+		FED689A017E7CECE005ACA5C /* LAME.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LAME.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +112,7 @@
 				FE4A817C17E1F4DE007F3690 /* FLAC.framework in Frameworks */,
 				FE4A81A417E20733007F3690 /* Ogg.framework in Frameworks */,
 				FE4A81A517E20733007F3690 /* Vorbis.framework in Frameworks */,
+				FED689A117E7CECE005ACA5C /* LAME.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +194,7 @@
 		FE4A817A17E1F3C5007F3690 /* External Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FED689A017E7CECE005ACA5C /* LAME.framework */,
 				FE4A81A217E20733007F3690 /* Ogg.framework */,
 				FE4A81A317E20733007F3690 /* Vorbis.framework */,
 				FE4A817B17E1F4DE007F3690 /* FLAC.framework */,
@@ -197,6 +218,8 @@
 				FE3FEDC617DFBF9600DBFBA4 /* Encoder.h */,
 				FE3FEDC717DFCC1E00DBFBA4 /* Passthrough.h */,
 				FE3FEDC817DFCC1E00DBFBA4 /* Passthrough.m */,
+				FED6899D17E7C270005ACA5C /* MP3Encoder.h */,
+				FED6899E17E7C270005ACA5C /* MP3Encoder.m */,
 				FE4A819917E1FF66007F3690 /* VorbisEncoder.h */,
 				FE4A819A17E1FF66007F3690 /* VorbisEncoder.m */,
 				FEAA549917E0E23A00227365 /* FLACEncoder.h */,
@@ -232,6 +255,7 @@
 				FE2EC22017DCA9F1007B157C /* Sources */,
 				FE2EC22117DCA9F1007B157C /* Frameworks */,
 				FE2EC22217DCA9F1007B157C /* Resources */,
+				FED689A217E7CF32005ACA5C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -303,6 +327,7 @@
 				FE4A819B17E1FF66007F3690 /* VorbisEncoder.m in Sources */,
 				FE4A81AF17E26269007F3690 /* NSDateFormatter+ISO8601.m in Sources */,
 				FE06834417E740E200BF3E0A /* PreferencesWindowController.m in Sources */,
+				FED6899F17E7C270005ACA5C /* MP3Encoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

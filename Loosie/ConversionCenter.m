@@ -11,9 +11,10 @@
 #import <iTunesLibrary/ITLibMediaItem.h>
 
 #import "Passthrough.h"
-#import "WaveEncoder.h"
-#import "FLACEncoder.h"
 #import "VorbisEncoder.h"
+#import "MP3Encoder.h"
+#import "FLACEncoder.h"
+#import "WaveEncoder.h"
 
 @implementation ConversionCenter {
     NSDictionary *defaultsKeyByKind;
@@ -54,8 +55,10 @@ FLACEncoder *CreateFLACEncoder() {
             case 1:
                 return CreateVorbisEncoder();
             case 2:
-                return CreateFLACEncoder();
+                return [[MP3Encoder alloc] init];
             case 3:
+                return CreateFLACEncoder();
+            case 4:
                 return [[WaveEncoder alloc] init];
         }
     }
