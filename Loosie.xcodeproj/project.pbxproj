@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE06834317E740E200BF3E0A /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE06834017E740E200BF3E0A /* PreferencesWindow.xib */; };
+		FE06834417E740E200BF3E0A /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE06834217E740E200BF3E0A /* PreferencesWindowController.m */; };
+		FE06834617E749CD00BF3E0A /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE06834517E749CD00BF3E0A /* Defaults.plist */; };
 		FE2EC22817DCA9F1007B157C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2EC22717DCA9F1007B157C /* Cocoa.framework */; };
 		FE2EC23217DCA9F1007B157C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE2EC23017DCA9F1007B157C /* InfoPlist.strings */; };
 		FE2EC23417DCA9F1007B157C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2EC23317DCA9F1007B157C /* main.m */; };
@@ -32,6 +35,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE06834017E740E200BF3E0A /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		FE06834117E740E200BF3E0A /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		FE06834217E740E200BF3E0A /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		FE06834517E749CD00BF3E0A /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		FE2EC22417DCA9F1007B157C /* Loosie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loosie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE2EC22717DCA9F1007B157C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FE2EC22A17DCA9F1007B157C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -142,6 +149,9 @@
 				FE3FEDC317DFAE2000DBFBA4 /* ConversionCenter.h */,
 				FE3FEDC417DFAE2000DBFBA4 /* ConversionCenter.m */,
 				FE2EC23C17DCA9F1007B157C /* MainMenu.xib */,
+				FE06834117E740E200BF3E0A /* PreferencesWindowController.h */,
+				FE06834217E740E200BF3E0A /* PreferencesWindowController.m */,
+				FE06834017E740E200BF3E0A /* PreferencesWindow.xib */,
 				FE2EC22E17DCA9F1007B157C /* Supporting Files */,
 			);
 			path = Loosie;
@@ -156,6 +166,7 @@
 				FE2EC23317DCA9F1007B157C /* main.m */,
 				FE2EC23517DCA9F1007B157C /* Loosie-Prefix.pch */,
 				FE2EC23617DCA9F1007B157C /* Credits.rtf */,
+				FE06834517E749CD00BF3E0A /* Defaults.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -186,12 +197,12 @@
 				FE3FEDC617DFBF9600DBFBA4 /* Encoder.h */,
 				FE3FEDC717DFCC1E00DBFBA4 /* Passthrough.h */,
 				FE3FEDC817DFCC1E00DBFBA4 /* Passthrough.m */,
-				FE9B77FC17E084D800EE1EE2 /* WaveEncoder.h */,
-				FE9B77FD17E084D800EE1EE2 /* WaveEncoder.m */,
-				FEAA549917E0E23A00227365 /* FLACEncoder.h */,
-				FEAA549A17E0E23A00227365 /* FLACEncoder.m */,
 				FE4A819917E1FF66007F3690 /* VorbisEncoder.h */,
 				FE4A819A17E1FF66007F3690 /* VorbisEncoder.m */,
+				FEAA549917E0E23A00227365 /* FLACEncoder.h */,
+				FEAA549A17E0E23A00227365 /* FLACEncoder.m */,
+				FE9B77FC17E084D800EE1EE2 /* WaveEncoder.h */,
+				FE9B77FD17E084D800EE1EE2 /* WaveEncoder.m */,
 			);
 			name = Encoders;
 			sourceTree = "<group>";
@@ -267,6 +278,8 @@
 				FE2EC23817DCA9F1007B157C /* Credits.rtf in Resources */,
 				FE2EC23E17DCA9F1007B157C /* MainMenu.xib in Resources */,
 				FEB0842717DE3C6100445E54 /* Loosie.icns in Resources */,
+				FE06834317E740E200BF3E0A /* PreferencesWindow.xib in Resources */,
+				FE06834617E749CD00BF3E0A /* Defaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +302,7 @@
 				FE70B63717E1CBD4003FB03A /* AudioToolboxUtils.m in Sources */,
 				FE4A819B17E1FF66007F3690 /* VorbisEncoder.m in Sources */,
 				FE4A81AF17E26269007F3690 /* NSDateFormatter+ISO8601.m in Sources */,
+				FE06834417E740E200BF3E0A /* PreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

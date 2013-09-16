@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Encoder.h"
+#import "Converter.h"
 
-@interface VorbisEncoder : NSObject <Encoder>
+@interface VorbisConverter : NSObject <Converter>
 
 @property (assign, nonatomic) float VBRQuality;
-@property (assign, nonatomic) BOOL includeAdvancedMetadata;
+@property (assign, nonatomic) BOOL onlyBasicMetadata;
 
 @end

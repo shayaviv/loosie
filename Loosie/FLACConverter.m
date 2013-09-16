@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Shay Aviv. All rights reserved.
 //
 
-#import "FLACEncoder.h"
+#import "FLACConverter.h"
 
 #import <AudioToolbox/AudioToolbox.h>
 #import <iTunesLibrary/ITLibMediaItem.h>
@@ -20,7 +20,7 @@
 #include <FLAC/metadata.h>
 #include <FLAC/stream_encoder.h>
 
-@implementation FLACEncoder
+@implementation FLACConverter
 
 static const UInt32 kSamplesToBuffer = 2048;
 
@@ -29,16 +29,17 @@ static BOOL AddNumberFieldToComment(FLAC__StreamMetadata *comment, const char *f
 static NSError* TranslateEncoderInitError(FLAC__StreamEncoderInitStatus status);
 static NSError* TranslateEncoderStateError(NSString *description, FLAC__StreamEncoder *encoder);
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         self.compressionLevel = 5;
-        self.includeAdvancedMetadata = YES;
+        self.onlyBasicMetadata = YES;
     }
     return self;
 }
 
-- (BOOL)encode:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
+- (BOOL)convert:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
     ExtAudioFileRef infile;
     if (HasError(ExtAudioFileOpenURL((__bridge CFURLRef)item.location, &infile), error))
         return NO;
@@ -77,7 +78,7 @@ static NSError* TranslateEncoderStateError(NSString *description, FLAC__StreamEn
     AddStringFieldToComment(metadata[0], "CONTENTGROUP",    item.grouping);
     AddStringFieldToComment(metadata[0], "COMMENT",         item.comments);
     AddNumberFieldToComment(metadata[0], "COMPILATION",     item.album.isCompilation);
-    if (self.includeAdvancedMetadata) {
+    if (!self.onlyBasicMetadata) {
         AddStringFieldToComment(metadata[0], "ALBUMARTIST",     item.album.albumArtist);
         AddStringFieldToComment(metadata[0], "TITLESORT",       item.sortTitle);
         AddStringFieldToComment(metadata[0], "ARTISTSORT",      item.artist.sortName);

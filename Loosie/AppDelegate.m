@@ -15,6 +15,7 @@
 #import <AudioToolbox/ExtendedAudioFile.h>
 #import <libkern/OSAtomic.h>
 
+#import "PreferencesWindowController.h"
 #import "DefaultOutputFileNamer.h"
 #import "ConversionCenter.h"
 
@@ -42,6 +43,8 @@ static const int kProgressSteps = 256;
         self.dockProgress.hidden = YES;
         [imageView addSubview:self.dockProgress];
         
+        self.preferencesWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindow"];
+        
         ITLibrary *library = [ITLibrary libraryWithAPIVersion:@"1.0" error:nil];
         self.fileNamer = [[DefaultOutputFileNamer alloc] initWithLibrary:library];
         self.conversionCenter = [[ConversionCenter alloc] init];
@@ -54,6 +57,8 @@ static const int kProgressSteps = 256;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"]]];
+    
     self.playlistsController.filterPredicate = [NSPredicate predicateWithFormat:
                                                 @"ANY items.mediaKind == %d", ITLibMediaItemMediaKindSong];
     self.panelProgress.usesThreadedAnimation = NO;
@@ -62,6 +67,10 @@ static const int kProgressSteps = 256;
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
     return YES;
+}
+
+- (IBAction)openPreferences:(id)sender {
+    [self.preferencesWindowController showWindow:self];
 }
 
 - (IBAction)chooseDirectory:(id)sender {

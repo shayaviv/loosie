@@ -15,6 +15,7 @@
 
 @property (assign, nonatomic) NSDockTile *dockTile;
 @property (strong, nonatomic) NSProgressIndicator *dockProgress;
+@property (strong, nonatomic) NSWindowController *preferencesWindowController;
 
 @property (assign, nonatomic) IBOutlet NSWindow *window;
 @property (weak, nonatomic) IBOutlet NSArrayController *playlistsController;
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) NSOperationQueue *queue;
 @property (assign, nonatomic) double progress;
 
+- (IBAction)openPreferences:(id)sender;
 - (IBAction)chooseDirectory:(id)sender;
 - (IBAction)convert:(id)sender;
 - (IBAction)stop:(id)sender;

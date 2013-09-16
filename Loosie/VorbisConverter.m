@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Shay Aviv. All rights reserved.
 //
 
-#import "VorbisEncoder.h"
+#import "VorbisConverter.h"
 
 #import <AudioToolbox/AudioToolbox.h>
 #import <iTunesLibrary/ITLibMediaItem.h>
@@ -19,23 +19,24 @@
 
 #include <vorbis/vorbisenc.h>
 
-@implementation VorbisEncoder
+@implementation VorbisConverter
 
 static const UInt32 kSamplesToBuffer = 2048;
 
 static BOOL AddStringFieldToComment(vorbis_comment *comment, const char *fieldName, NSString *value);
 static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldName, NSUInteger value);
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         self.VBRQuality = 0.4;
-        self.includeAdvancedMetadata = YES;
+        self.onlyBasicMetadata = YES;
     }
     return self;
 }
 
-- (BOOL)encode:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
+- (BOOL)convert:(ITLibMediaItem *)item outputURL:(NSURL *)outputURLWithoutExtension error:(NSError **)error {
     ExtAudioFileRef infile;
     if (HasError(ExtAudioFileOpenURL((__bridge CFURLRef)item.location, &infile), error))
         return NO;
@@ -124,7 +125,7 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
     AddStringFieldToComment(&vc, "CONTENTGROUP",    item.grouping);
     AddStringFieldToComment(&vc, "COMMENT",         item.comments);
     AddNumberFieldToComment(&vc, "COMPILATION",     item.album.isCompilation);
-    if (self.includeAdvancedMetadata) {
+    if (!self.onlyBasicMetadata) {
         AddStringFieldToComment(&vc, "ALBUMARTIST",     item.album.albumArtist);
         AddStringFieldToComment(&vc, "TITLESORT",       item.sortTitle);
         AddStringFieldToComment(&vc, "ARTISTSORT",      item.artist.sortName);

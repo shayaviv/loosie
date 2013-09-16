@@ -15,40 +15,47 @@
 #import "FLACEncoder.h"
 #import "VorbisEncoder.h"
 
-@interface ConversionCenter ()
-@property (strong, nonatomic) NSDictionary *encoderByKind;
-@end
-
-@implementation ConversionCenter
+@implementation ConversionCenter {
+    NSDictionary *defaultsKeyByKind;
+}
 
 - (id)init {
     self = [super init];
     if (self) {
-        Passthrough *passthrough = [[Passthrough alloc] init];
-        //WaveConverter *wave = [[WaveConverter alloc] init];
-        FLACEncoder *flac = [[FLACEncoder alloc] init];
-        VorbisEncoder *vorbis = [[VorbisEncoder alloc] init];
-        
-        id <Encoder> lossless = flac;
-        id <Encoder> mp3 = passthrough;
-        id <Encoder> aac = vorbis;
-        
-        self.encoderByKind = [NSDictionary dictionaryWithObjectsAndKeys:
-                                lossless, @"Apple Lossless audio file",
-                                lossless, @"WAV audio file",
-                                lossless, @"AIFF audio file",
-                                mp3, @"MPEG audio file",
-                                aac, @"AAC audio file",
-                                aac, @"Purchased AAC audio file", nil];
+        defaultsKeyByKind = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"LosslessTargetEncoder", @"Apple Lossless audio file",
+                             @"LosslessTargetEncoder", @"WAV audio file",
+                             @"LosslessTargetEncoder", @"AIFF audio file",
+                             @"AACTargetEncoder", @"AAC audio file",
+                             @"AACTargetEncoder", @"Purchased AAC audio file",
+                             @"MP3TargetEncoder", @"MPEG audio file", nil];
     }
     return self;
 }
 
 - (id <Encoder>)encoderForMediaItem:(ITLibMediaItem *)item {
-    if (item.mediaKind == ITLibMediaItemMediaKindSong && !item.isDRMProtected)
-        return self.encoderByKind[item.kind];
-    else
-        return nil;
+    if (item.mediaKind == ITLibMediaItemMediaKindSong && !item.isDRMProtected) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        switch([defaults integerForKey:defaultsKeyByKind[item.kind]]) {
+            case PassthroughEncoderType:
+                return [[Passthrough alloc] init];
+            case VorbisEncoderType:
+            {
+                VorbisEncoder *vorbisEncoder = [[VorbisEncoder alloc] init];
+                vorbisEncoder.includeAdvancedMetadata = [defaults boolForKey:@"IncludeAdvancedMetadata"];
+                return vorbisEncoder;
+            }
+            case FLACEncoderType:
+            {
+                FLACEncoder *flacEncoder = [[FLACEncoder alloc] init];
+                flacEncoder.includeAdvancedMetadata = [defaults boolForKey:@"IncludeAdvancedMetadata"];
+                return flacEncoder;
+            }
+            case WaveEncoderType:
+                return [[WaveEncoder alloc] init];
+        }
+    }
+    return nil;
 }
 
 @end

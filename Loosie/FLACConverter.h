@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Encoder.h"
+#import "Converter.h"
 
-@interface FLACEncoder : NSObject <Encoder>
+@interface FLACConverter : NSObject <Converter>
 
 @property (assign, nonatomic) UInt32 compressionLevel;
-@property (assign, nonatomic) BOOL includeAdvancedMetadata;
+@property (assign, nonatomic) BOOL onlyBasicMetadata;
 
 @end
