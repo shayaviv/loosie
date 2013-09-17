@@ -25,7 +25,8 @@ static const UInt32 kBufferSize = 4096;
     if (HasError(ExtAudioFileOpenURL((__bridge CFURLRef)item.location, &infile), error))
         return NO;
     
-    AudioStreamBasicDescription streamDesc = MakeLinearPCMStreamDescription((UInt32)item.sampleRate, item.channels, item.bitsPerChannel);
+    AudioStreamBasicDescription streamDesc = {0};
+    FillOutASBDForLPCM(&streamDesc, item.sampleRate, item.channels, item.bitsPerChannel, NO, NO);
     
     ExtAudioFileRef outfile;
     if (HasError(ExtAudioFileCreateWithURL(
@@ -44,18 +45,18 @@ static const UInt32 kBufferSize = 4096;
         goto error;
 	
 	char srcBuffer[kBufferSize];
-    AudioBufferList fillBufList = { 1, { streamDesc.mChannelsPerFrame, kBufferSize, srcBuffer }};
+    AudioBufferList bufferList = { 1, { streamDesc.mChannelsPerFrame, kBufferSize, srcBuffer }};
     const UInt32 framesToBuffer = kBufferSize / streamDesc.mBytesPerFrame;
     
 	while (1) {              
         UInt32 numFrames = framesToBuffer;
-        if (HasError(ExtAudioFileRead(infile, &numFrames, &fillBufList), error))
+        if (HasError(ExtAudioFileRead(infile, &numFrames, &bufferList), error))
             goto error;
         
 		if (!numFrames) // this is our termination condition
 			break;
 		
-        if (HasError(ExtAudioFileWrite(outfile, numFrames, &fillBufList), error))
+        if (HasError(ExtAudioFileWrite(outfile, numFrames, &bufferList), error))
             goto error;
 	}
     

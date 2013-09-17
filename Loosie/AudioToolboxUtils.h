@@ -11,4 +11,9 @@
 
 BOOL HasError(OSStatus status, NSError **error);
 
-AudioStreamBasicDescription MakeLinearPCMStreamDescription(UInt32 sampleRate, UInt32 channels, UInt32 bitsPerChannel);
+void FillOutASBDForLPCM(AudioStreamBasicDescription *ASBD,
+                        Float64 sampleRate,
+                        UInt32 channelsPerFrame,
+                        UInt32 bitsPerChannel,
+                        BOOL isFloat,
+                        BOOL isNonInterleaved);

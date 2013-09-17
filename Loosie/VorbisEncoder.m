@@ -41,14 +41,7 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
         return NO;
     
     AudioStreamBasicDescription clientFormat = {0};
-    clientFormat.mSampleRate        = item.sampleRate;
-    clientFormat.mFormatID          = kAudioFormatLinearPCM;
-    clientFormat.mFormatFlags       = kAudioFormatFlagsAudioUnitCanonical;
-    clientFormat.mBytesPerPacket    = sizeof(AudioUnitSampleType);
-    clientFormat.mFramesPerPacket   = 1;
-    clientFormat.mBytesPerFrame     = sizeof(AudioUnitSampleType);
-    clientFormat.mChannelsPerFrame  = item.channels;
-    clientFormat.mBitsPerChannel    = 8 * sizeof(AudioUnitSampleType);
+    FillOutASBDForLPCM(&clientFormat, item.sampleRate, item.channels, 32, YES, YES);
     
     if (HasError(ExtAudioFileSetProperty(infile, kExtAudioFileProperty_ClientDataFormat,
                                          sizeof(AudioStreamBasicDescription), &clientFormat), error)) {

@@ -25,9 +25,11 @@ static const UInt32 kMP3BufferSize = 1.25*kSamplesToBuffer + 7200;
         return NO;
     
     // Force reading as 2 channels, 16 bits per channel
-    AudioStreamBasicDescription streamDesc = MakeLinearPCMStreamDescription((UInt32)item.sampleRate, 2, 16);
+    AudioStreamBasicDescription clientFormat = {0};
+    FillOutASBDForLPCM(&clientFormat, item.sampleRate, 2, 16, NO, NO);
+    
     if (HasError(ExtAudioFileSetProperty(infile, kExtAudioFileProperty_ClientDataFormat,
-                                         sizeof(AudioStreamBasicDescription), &streamDesc), error)) {
+                                         sizeof(AudioStreamBasicDescription), &clientFormat), error)) {
         ExtAudioFileDispose(infile);
         return NO;
     }
@@ -49,14 +51,14 @@ static const UInt32 kMP3BufferSize = 1.25*kSamplesToBuffer + 7200;
     
     int16_t srcBuffer[kSamplesToBuffer];
     uint8_t mp3Buffer[kMP3BufferSize];
-    const UInt32 framesToBuffer = kSamplesToBuffer / 2;
-    AudioBufferList fillBufList = { 1, { 2, framesToBuffer*streamDesc.mBytesPerFrame, srcBuffer } };
+    const UInt32 framesToBuffer = kSamplesToBuffer / clientFormat.mChannelsPerFrame;
+    AudioBufferList bufferList = { 1, { clientFormat.mChannelsPerFrame, framesToBuffer*clientFormat.mBytesPerFrame, srcBuffer } };
     int bytesWritten;
     
     BOOL ok = YES;
     do {
         UInt32 numFrames = framesToBuffer;
-        if (HasError(ExtAudioFileRead(infile, &numFrames, &fillBufList), error)) {
+        if (HasError(ExtAudioFileRead(infile, &numFrames, &bufferList), error)) {
             ok = NO;
             break;
         }

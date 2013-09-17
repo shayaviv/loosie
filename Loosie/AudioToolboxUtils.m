@@ -17,16 +17,31 @@ BOOL HasError(OSStatus status, NSError **error) {
     return NO;
 }
 
-AudioStreamBasicDescription MakeLinearPCMStreamDescription(UInt32 sampleRate, UInt32 channels, UInt32 bitsPerChannel) {
-    AudioStreamBasicDescription desc;
-    desc.mSampleRate = sampleRate;
-    desc.mFormatID = kAudioFormatLinearPCM;
-    desc.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-    desc.mBytesPerPacket = 1 * channels * bitsPerChannel / 8;
-    desc.mFramesPerPacket = 1;
-    desc.mBytesPerFrame = channels * bitsPerChannel / 8;
-    desc.mChannelsPerFrame = channels;
-    desc.mBitsPerChannel = bitsPerChannel;
-    desc.mReserved = 0;
-    return desc;
+static UInt32 CalculateLPCMFlags(UInt32 bitsPerChannel,
+                                 BOOL isFloat,
+                                 BOOL isNonInterleaved) {
+    return
+    (isFloat ? kAudioFormatFlagIsFloat : kAudioFormatFlagIsSignedInteger) |
+    (isFloat ? kAudioFormatFlagIsAlignedHigh : kAudioFormatFlagIsPacked)  |
+    (isNonInterleaved ? ((UInt32)kAudioFormatFlagIsNonInterleaved) : 0);
+}
+
+void FillOutASBDForLPCM(AudioStreamBasicDescription *ABSD,
+                        Float64 sampleRate,
+                        UInt32 channelsPerFrame,
+                        UInt32 bitsPerChannel,
+                        BOOL isFloat,
+                        BOOL isNonInterleaved) {
+    ABSD->mSampleRate = sampleRate;
+    ABSD->mFormatID = kAudioFormatLinearPCM;
+    ABSD->mFormatFlags =    CalculateLPCMFlags(bitsPerChannel,
+                                               isFloat,
+                                               isNonInterleaved);
+    ABSD->mBytesPerPacket =
+    (isNonInterleaved ? 1 : channelsPerFrame) * (bitsPerChannel/8);
+    ABSD->mFramesPerPacket = 1;
+    ABSD->mBytesPerFrame =
+    (isNonInterleaved ? 1 : channelsPerFrame) * (bitsPerChannel/8);
+    ABSD->mChannelsPerFrame = channelsPerFrame;
+    ABSD->mBitsPerChannel = bitsPerChannel;
 }

@@ -44,18 +44,20 @@ static NSError* TranslateEncoderStateError(NSString *description, FLAC__StreamEn
         return NO;
     
     // Force reading as 16 bits per channel
-    AudioStreamBasicDescription streamDesc = MakeLinearPCMStreamDescription((UInt32)item.sampleRate, item.channels, 16);
+    AudioStreamBasicDescription clientFormat = {0};
+    FillOutASBDForLPCM(&clientFormat, item.sampleRate, item.channels, 16, NO, NO);
+    
     if (HasError(ExtAudioFileSetProperty(infile, kExtAudioFileProperty_ClientDataFormat,
-                                         sizeof(AudioStreamBasicDescription), &streamDesc), error)) {
+                                         sizeof(AudioStreamBasicDescription), &clientFormat), error)) {
         ExtAudioFileDispose(infile);
         return NO;
     }
        
 	/* allocate the encoder */
     FLAC__StreamEncoder *encoder = FLAC__stream_encoder_new();
-	FLAC__stream_encoder_set_channels(encoder, streamDesc.mChannelsPerFrame);
-	FLAC__stream_encoder_set_bits_per_sample(encoder, streamDesc.mBitsPerChannel);
-	FLAC__stream_encoder_set_sample_rate(encoder, streamDesc.mSampleRate);
+	FLAC__stream_encoder_set_channels(encoder, clientFormat.mChannelsPerFrame);
+	FLAC__stream_encoder_set_bits_per_sample(encoder, clientFormat.mBitsPerChannel);
+	FLAC__stream_encoder_set_sample_rate(encoder, clientFormat.mSampleRate);
     FLAC__stream_encoder_set_compression_level(encoder, self.compressionLevel);
     
 	/* now add some metadata; we'll add some tags and a padding block */
@@ -110,13 +112,13 @@ static NSError* TranslateEncoderStateError(NSString *description, FLAC__StreamEn
     FLAC__int16 srcBuffer[kSamplesToBuffer];
     FLAC__int32 buffer[kSamplesToBuffer];
     
-    const UInt32 framesToBuffer = kSamplesToBuffer / streamDesc.mChannelsPerFrame;
-    AudioBufferList fillBufList = { 1, { streamDesc.mChannelsPerFrame, framesToBuffer*streamDesc.mBytesPerFrame, srcBuffer }};
+    const UInt32 framesToBuffer = kSamplesToBuffer / clientFormat.mChannelsPerFrame;
+    AudioBufferList bufferList = { 1, { clientFormat.mChannelsPerFrame, framesToBuffer*clientFormat.mBytesPerFrame, srcBuffer }};
     
     BOOL ok = YES;
     do {
         UInt32 numFrames = framesToBuffer;
-        if (HasError(ExtAudioFileRead(infile, &numFrames, &fillBufList), error)) {
+        if (HasError(ExtAudioFileRead(infile, &numFrames, &bufferList), error)) {
             ok = NO;
             break;
         }
