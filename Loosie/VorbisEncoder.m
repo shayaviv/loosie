@@ -21,7 +21,7 @@
 
 @implementation VorbisEncoder
 
-static const UInt32 kSamplesToBuffer = 2048;
+static const UInt32 kFramesToBuffer = 1024;
 
 static BOOL AddStringFieldToComment(vorbis_comment *comment, const char *fieldName, NSString *value);
 static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldName, NSUInteger value);
@@ -41,15 +41,14 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
         return NO;
     
     AudioStreamBasicDescription clientFormat = {0};
+    clientFormat.mSampleRate        = item.sampleRate;
     clientFormat.mFormatID          = kAudioFormatLinearPCM;
     clientFormat.mFormatFlags       = kAudioFormatFlagsAudioUnitCanonical;
-    clientFormat.mBytesPerPacket    = sizeof (AudioUnitSampleType);
+    clientFormat.mBytesPerPacket    = sizeof(AudioUnitSampleType);
     clientFormat.mFramesPerPacket   = 1;
-    clientFormat.mBytesPerFrame     = sizeof (AudioUnitSampleType);
+    clientFormat.mBytesPerFrame     = sizeof(AudioUnitSampleType);
     clientFormat.mChannelsPerFrame  = item.channels;
-    clientFormat.mBitsPerChannel    = 8 * sizeof (AudioUnitSampleType);
-    clientFormat.mSampleRate        = item.sampleRate;
-    clientFormat.mFormatFlags = kAudioFormatFlagsAudioUnitCanonical;
+    clientFormat.mBitsPerChannel    = 8 * sizeof(AudioUnitSampleType);
     
     if (HasError(ExtAudioFileSetProperty(infile, kExtAudioFileProperty_ClientDataFormat,
                                          sizeof(AudioStreamBasicDescription), &clientFormat), error)) {
@@ -186,24 +185,22 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
         }
         
     }
-    
-    const UInt32 framesToBuffer = kSamplesToBuffer / clientFormat.mChannelsPerFrame;
-    
+      
     AudioBufferList *bufferList = malloc(sizeof(AudioBufferList) + sizeof(AudioBuffer)*clientFormat.mChannelsPerFrame);
     bufferList->mNumberBuffers = clientFormat.mChannelsPerFrame;
     for (size_t channel = 0; channel < clientFormat.mChannelsPerFrame; ++channel) {
         bufferList->mBuffers[channel].mNumberChannels = 1;
-        bufferList->mBuffers[channel].mDataByteSize = framesToBuffer*clientFormat.mBytesPerFrame;
+        bufferList->mBuffers[channel].mDataByteSize = kFramesToBuffer*clientFormat.mBytesPerFrame;
     }
     
     while (true) {
         /* expose the buffer to submit data */
-        float **buffer = vorbis_analysis_buffer(&vd, framesToBuffer);
+        float **buffer = vorbis_analysis_buffer(&vd, kFramesToBuffer);
         
         for (size_t channel = 0; channel < clientFormat.mChannelsPerFrame; ++channel)
             bufferList->mBuffers[channel].mData = buffer[channel];
     
-        UInt32 numFrames = framesToBuffer;
+        UInt32 numFrames = kFramesToBuffer;
         if (HasError(ExtAudioFileRead(infile, &numFrames, bufferList), error)) {
             //ok = NO;
             break;
