@@ -117,25 +117,7 @@
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
-								<object class="NSMenuItem" key="NSMenuItem" id="896553210">
-									<reference key="NSMenu" ref="272325540"/>
-									<bool key="NSIsDisabled">YES</bool>
-									<bool key="NSIsSeparator">YES</bool>
-									<string key="NSTitle"/>
-									<string key="NSKeyEquiv"/>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<int key="NSState">1</int>
-									<object class="NSCustomResource" key="NSOnImage" id="336554554">
-										<string key="NSClassName">NSImage</string>
-										<string key="NSResourceName">NSMenuCheckmark</string>
-									</object>
-									<object class="NSCustomResource" key="NSMixedImage" id="234014067">
-										<string key="NSClassName">NSImage</string>
-										<string key="NSResourceName">NSMenuMixedState</string>
-									</object>
-									<string key="NSAction">_popUpItemAction:</string>
-									<reference key="NSTarget" ref="351644817"/>
-								</object>
+								<nil key="NSMenuItem"/>
 								<bool key="NSMenuItemRespectAlignment">YES</bool>
 								<object class="NSMenu" key="NSMenu" id="272325540">
 									<string key="NSTitle">OtherViews</string>
@@ -146,20 +128,37 @@
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<object class="NSCustomResource" key="NSOnImage" id="29019144">
+												<string key="NSClassName">NSImage</string>
+												<string key="NSResourceName">NSMenuCheckmark</string>
+											</object>
+											<object class="NSCustomResource" key="NSMixedImage" id="1033473208">
+												<string key="NSClassName">NSImage</string>
+												<string key="NSResourceName">NSMenuMixedState</string>
+											</object>
 											<string key="NSAction">_popUpItemAction:</string>
 											<reference key="NSTarget" ref="351644817"/>
 										</object>
-										<reference ref="896553210"/>
+										<object class="NSMenuItem" id="896553210">
+											<reference key="NSMenu" ref="272325540"/>
+											<bool key="NSIsDisabled">YES</bool>
+											<bool key="NSIsSeparator">YES</bool>
+											<string key="NSTitle"/>
+											<string key="NSKeyEquiv"/>
+											<int key="NSMnemonicLoc">2147483647</int>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
+											<string key="NSAction">_popUpItemAction:</string>
+											<reference key="NSTarget" ref="351644817"/>
+										</object>
 										<object class="NSMenuItem" id="341447384">
 											<reference key="NSMenu" ref="272325540"/>
 											<string key="NSTitle">Ogg Vorbis Encoder</string>
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<int key="NSTag">1</int>
 											<reference key="NSTarget" ref="351644817"/>
@@ -169,8 +168,8 @@
 											<string key="NSTitle">MP3 Encoder</string>
 											<string key="NSKeyEquiv"/>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<int key="NSTag">2</int>
 											<reference key="NSTarget" ref="351644817"/>
@@ -180,8 +179,8 @@
 											<string key="NSTitle">FLAC Encoder</string>
 											<string key="NSKeyEquiv"/>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<int key="NSTag">3</int>
 											<reference key="NSTarget" ref="351644817"/>
@@ -192,8 +191,8 @@
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<int key="NSTag">4</int>
 											<reference key="NSTarget" ref="351644817"/>
@@ -201,7 +200,7 @@
 									</array>
 									<reference key="NSMenuFont" ref="65067798"/>
 								</object>
-								<int key="NSSelectedIndex">1</int>
+								<int key="NSSelectedIndex">-1</int>
 								<int key="NSPreferredEdge">1</int>
 								<bool key="NSUsesItemFromMenu">YES</bool>
 								<bool key="NSAltersState">YES</bool>
@@ -229,19 +228,7 @@
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
-								<object class="NSMenuItem" key="NSMenuItem" id="393608913">
-									<reference key="NSMenu" ref="1052816796"/>
-									<bool key="NSIsDisabled">YES</bool>
-									<bool key="NSIsSeparator">YES</bool>
-									<string key="NSTitle"/>
-									<string key="NSKeyEquiv"/>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<int key="NSState">1</int>
-									<reference key="NSOnImage" ref="336554554"/>
-									<reference key="NSMixedImage" ref="234014067"/>
-									<string key="NSAction">_popUpItemAction:</string>
-									<reference key="NSTarget" ref="43625901"/>
-								</object>
+								<nil key="NSMenuItem"/>
 								<bool key="NSMenuItemRespectAlignment">YES</bool>
 								<object class="NSMenu" key="NSMenu" id="1052816796">
 									<string key="NSTitle">OtherViews</string>
@@ -252,20 +239,31 @@
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<reference key="NSTarget" ref="43625901"/>
 										</object>
-										<reference ref="393608913"/>
+										<object class="NSMenuItem" id="393608913">
+											<reference key="NSMenu" ref="1052816796"/>
+											<bool key="NSIsDisabled">YES</bool>
+											<bool key="NSIsSeparator">YES</bool>
+											<string key="NSTitle"/>
+											<string key="NSKeyEquiv"/>
+											<int key="NSMnemonicLoc">2147483647</int>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
+											<string key="NSAction">_popUpItemAction:</string>
+											<reference key="NSTarget" ref="43625901"/>
+										</object>
 										<object class="NSMenuItem" id="937354753">
 											<reference key="NSMenu" ref="1052816796"/>
 											<string key="NSTitle">Ogg Vorbis Encoder</string>
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<int key="NSTag">1</int>
 											<reference key="NSTarget" ref="43625901"/>
@@ -275,8 +273,8 @@
 											<string key="NSTitle">MP3 Encoder</string>
 											<string key="NSKeyEquiv"/>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<int key="NSTag">2</int>
 											<reference key="NSTarget" ref="43625901"/>
@@ -287,8 +285,8 @@
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<int key="NSTag">4</int>
 											<reference key="NSTarget" ref="43625901"/>
@@ -296,7 +294,7 @@
 									</array>
 									<reference key="NSMenuFont" ref="65067798"/>
 								</object>
-								<int key="NSSelectedIndex">1</int>
+								<int key="NSSelectedIndex">-1</int>
 								<int key="NSPreferredEdge">1</int>
 								<bool key="NSUsesItemFromMenu">YES</bool>
 								<bool key="NSAltersState">YES</bool>
@@ -643,7 +641,6 @@
 							<string key="NSFrame">{{248, 12}, {82, 32}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="319401086">
@@ -706,19 +703,7 @@
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
-								<object class="NSMenuItem" key="NSMenuItem" id="249194385">
-									<reference key="NSMenu" ref="375552392"/>
-									<bool key="NSIsDisabled">YES</bool>
-									<bool key="NSIsSeparator">YES</bool>
-									<string key="NSTitle"/>
-									<string key="NSKeyEquiv"/>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<int key="NSState">1</int>
-									<reference key="NSOnImage" ref="336554554"/>
-									<reference key="NSMixedImage" ref="234014067"/>
-									<string key="NSAction">_popUpItemAction:</string>
-									<reference key="NSTarget" ref="788687423"/>
-								</object>
+								<nil key="NSMenuItem"/>
 								<bool key="NSMenuItemRespectAlignment">YES</bool>
 								<object class="NSMenu" key="NSMenu" id="375552392">
 									<string key="NSTitle">OtherViews</string>
@@ -729,20 +714,31 @@
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<reference key="NSTarget" ref="788687423"/>
 										</object>
-										<reference ref="249194385"/>
+										<object class="NSMenuItem" id="249194385">
+											<reference key="NSMenu" ref="375552392"/>
+											<bool key="NSIsDisabled">YES</bool>
+											<bool key="NSIsSeparator">YES</bool>
+											<string key="NSTitle"/>
+											<string key="NSKeyEquiv"/>
+											<int key="NSMnemonicLoc">2147483647</int>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
+											<string key="NSAction">_popUpItemAction:</string>
+											<reference key="NSTarget" ref="788687423"/>
+										</object>
 										<object class="NSMenuItem" id="335289510">
 											<reference key="NSMenu" ref="375552392"/>
 											<string key="NSTitle">Ogg Vorbis Encoder</string>
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
 											<int key="NSTag">1</int>
 											<reference key="NSTarget" ref="788687423"/>
@@ -753,16 +749,16 @@
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="336554554"/>
-											<reference key="NSMixedImage" ref="234014067"/>
+											<reference key="NSOnImage" ref="29019144"/>
+											<reference key="NSMixedImage" ref="1033473208"/>
 											<string key="NSAction">_popUpItemAction:</string>
-											<int key="NSTag">3</int>
+											<int key="NSTag">4</int>
 											<reference key="NSTarget" ref="788687423"/>
 										</object>
 									</array>
 									<reference key="NSMenuFont" ref="65067798"/>
 								</object>
-								<int key="NSSelectedIndex">1</int>
+								<int key="NSSelectedIndex">-1</int>
 								<int key="NSPreferredEdge">1</int>
 								<bool key="NSUsesItemFromMenu">YES</bool>
 								<bool key="NSAltersState">YES</bool>
