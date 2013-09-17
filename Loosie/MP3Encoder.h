@@ -12,4 +12,8 @@
 
 @interface MP3Encoder : NSObject <Encoder>
 
+@property (assign, nonatomic) NSUInteger bitRate;
+@property (assign, nonatomic) NSUInteger quality;
+@property (assign, nonatomic) BOOL includeAdvancedMetadata;
+
 @end

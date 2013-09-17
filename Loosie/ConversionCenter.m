@@ -40,6 +40,12 @@ VorbisEncoder *CreateVorbisEncoder() {
     return vorbisEncoder;
 }
 
+MP3Encoder *CreateMP3Encoder() {
+    MP3Encoder *mp3Encoder = [[MP3Encoder alloc] init];
+    mp3Encoder.includeAdvancedMetadata = [[NSUserDefaults standardUserDefaults] boolForKey:@"IncludeAdvancedMetadata"];
+    return mp3Encoder;
+}
+
 FLACEncoder *CreateFLACEncoder() {
     FLACEncoder *flacEncoder = [[FLACEncoder alloc] init];
     flacEncoder.includeAdvancedMetadata = [[NSUserDefaults standardUserDefaults] boolForKey:@"IncludeAdvancedMetadata"];
@@ -55,7 +61,7 @@ FLACEncoder *CreateFLACEncoder() {
             case 1:
                 return CreateVorbisEncoder();
             case 2:
-                return [[MP3Encoder alloc] init];
+                return CreateMP3Encoder();
             case 3:
                 return CreateFLACEncoder();
             case 4:
