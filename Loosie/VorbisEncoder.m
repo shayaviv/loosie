@@ -40,10 +40,19 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
     if (HasError(ExtAudioFileOpenURL((__bridge CFURLRef)item.location, &infile), error))
         return NO;
     
-    // Force reading as 16 bits per channel
-    AudioStreamBasicDescription streamDesc = MakeLinearPCMStreamDescription((UInt32)item.sampleRate, item.channels, 16);
+    AudioStreamBasicDescription clientFormat = {0};
+    clientFormat.mFormatID          = kAudioFormatLinearPCM;
+    clientFormat.mFormatFlags       = kAudioFormatFlagsAudioUnitCanonical;
+    clientFormat.mBytesPerPacket    = sizeof (AudioUnitSampleType);
+    clientFormat.mFramesPerPacket   = 1;
+    clientFormat.mBytesPerFrame     = sizeof (AudioUnitSampleType);
+    clientFormat.mChannelsPerFrame  = item.channels;
+    clientFormat.mBitsPerChannel    = 8 * sizeof (AudioUnitSampleType);
+    clientFormat.mSampleRate        = item.sampleRate;
+    clientFormat.mFormatFlags = kAudioFormatFlagsAudioUnitCanonical;
+    
     if (HasError(ExtAudioFileSetProperty(infile, kExtAudioFileProperty_ClientDataFormat,
-                                         sizeof(AudioStreamBasicDescription), &streamDesc), error)) {
+                                         sizeof(AudioStreamBasicDescription), &clientFormat), error)) {
         ExtAudioFileDispose(infile);
         return NO;
     }
@@ -99,7 +108,7 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
      
      *********************************************************************/
     
-    int ret = vorbis_encode_init_vbr(&vi, streamDesc.mChannelsPerFrame, streamDesc.mSampleRate, self.VBRQuality);
+    int ret = vorbis_encode_init_vbr(&vi, clientFormat.mChannelsPerFrame, clientFormat.mSampleRate, self.VBRQuality);
     
     /* do not continue if setup failed; this can happen if we ask for a
      mode that libVorbis does not support (eg, too low a bitrate, etc,
@@ -178,38 +187,32 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
         
     }
     
-    int16_t srcBuffer[kSamplesToBuffer];
-    const UInt32 framesToBuffer = kSamplesToBuffer / streamDesc.mChannelsPerFrame;
-    AudioBufferList fillBufList = { 1, {streamDesc.mChannelsPerFrame, framesToBuffer*streamDesc.mBytesPerFrame, srcBuffer} };
+    const UInt32 framesToBuffer = kSamplesToBuffer / clientFormat.mChannelsPerFrame;
+    
+    AudioBufferList *bufferList = malloc(sizeof(AudioBufferList) + sizeof(AudioBuffer)*clientFormat.mChannelsPerFrame);
+    bufferList->mNumberBuffers = clientFormat.mChannelsPerFrame;
+    for (size_t channel = 0; channel < clientFormat.mChannelsPerFrame; ++channel) {
+        bufferList->mBuffers[channel].mNumberChannels = 1;
+        bufferList->mBuffers[channel].mDataByteSize = framesToBuffer*clientFormat.mBytesPerFrame;
+    }
     
     while (true) {
+        /* expose the buffer to submit data */
+        float **buffer = vorbis_analysis_buffer(&vd, framesToBuffer);
+        
+        for (size_t channel = 0; channel < clientFormat.mChannelsPerFrame; ++channel)
+            bufferList->mBuffers[channel].mData = buffer[channel];
+    
         UInt32 numFrames = framesToBuffer;
-        if (HasError(ExtAudioFileRead(infile, &numFrames, &fillBufList), error)) {
+        if (HasError(ExtAudioFileRead(infile, &numFrames, bufferList), error)) {
             //ok = NO;
             break;
         }
-        
-        if (numFrames == 0) {
-            /* end of file.  this can be done implicitly in the mainline,
-             but it's easier to see here in non-clever fashion.
-             Tell the library we're at end of stream so that it can handle
-             the last frame and mark end of stream in the output properly */
-            vorbis_analysis_wrote(&vd, 0);
+    
+        /* tell the library how much we actually submitted */
+        vorbis_analysis_wrote(&vd, numFrames);
+        if (numFrames == 0)
             break;
-        } else {
-            /* data to encode */
-            
-            /* expose the buffer to submit data */
-            float **buffer = vorbis_analysis_buffer(&vd, framesToBuffer);
-            
-            /* uninterleave samples */
-            for (size_t i = 0; i < streamDesc.mChannelsPerFrame; i++)
-                for (size_t dest = 0, src = i; dest < numFrames; dest++, src += streamDesc.mChannelsPerFrame)
-                    buffer[i][dest] = srcBuffer[src] / 32768.f;
-            
-            /* tell the library how much we actually submitted */
-            vorbis_analysis_wrote(&vd, numFrames);
-        }
         
         /* vorbis does some data preanalysis, then divvies up blocks for
          more involved (potentially parallel) processing.  Get a single
@@ -242,6 +245,8 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
             }
         }
     }
+    
+    free(bufferList);
     
     /* clean up and exit.  vorbis_info_clear() must be called last */
     
