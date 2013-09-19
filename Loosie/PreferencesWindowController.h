@@ -15,8 +15,13 @@
 @property (strong, nonatomic) ConversionCenter *conversionCenter;
 
 @property (weak) IBOutlet NSArrayController *losslessEncoders;
+@property (weak) IBOutlet NSArrayController *losslessEncoderSettings;
+
 @property (weak) IBOutlet NSArrayController *aacEncoders;
+@property (weak) IBOutlet NSArrayController *aacEncoderSettings;
+
 @property (weak) IBOutlet NSArrayController *mp3Encoders;
+@property (weak) IBOutlet NSArrayController *mp3EncoderSettings;
 
 @property (weak, nonatomic) IBOutlet NSUserDefaultsController *defaultsController;
 

@@ -14,10 +14,10 @@
     return _description;
 }
 
-+ (id)settingWithValue:(NSInteger)value andDescription:(NSString *)description {
++ (id)settingWithTag:(NSInteger)tag andDescription:(NSString *)description {
     EncoderSetting *setting = [[EncoderSetting alloc] init];
     if (setting) {
-        setting->_value = value;
+        setting->_tag = tag;
         setting->_description = description;
     }
     return setting;

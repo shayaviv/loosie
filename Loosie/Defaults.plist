@@ -9,7 +9,7 @@
 	<key>AACTargetEncoder</key>
 	<integer>1</integer>
 	<key>AACTargetEncoderSetting</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>MP3TargetEncoder</key>
 	<integer>0</integer>
 	<key>MP3TargetEncoderSetting</key>

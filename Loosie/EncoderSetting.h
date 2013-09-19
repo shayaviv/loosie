@@ -12,8 +12,8 @@
     NSString *_description;
 }
 
-@property (readonly, nonatomic) NSInteger value;
+@property (readonly, nonatomic) NSInteger tag;
 
-+ (id)settingWithValue:(NSInteger)value andDescription:(NSString *)description;
++ (id)settingWithTag:(NSInteger)tag andDescription:(NSString *)description;
 
 @end

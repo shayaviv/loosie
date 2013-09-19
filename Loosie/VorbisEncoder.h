@@ -10,9 +10,15 @@
 
 #import "Encoder.h"
 
+typedef enum {
+    VorbisEncoderSettingVeryHighQuality,
+    VorbisEncoderSettingGoodQuality,
+    VorbisEncoderSettingAcceptableQuality
+} VorbisEncoderSetting;
+
 @interface VorbisEncoder : NSObject <Encoder>
 
-@property (assign, nonatomic) float VBRQuality;
+@property (assign, nonatomic) VorbisEncoderSetting setting;
 @property (assign, nonatomic) BOOL includeAdvancedMetadata;
 
 @end

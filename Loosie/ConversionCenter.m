@@ -25,13 +25,20 @@
 - (id)init {
     self = [super init];
     if (self) {
-        EncoderSetting *automatic = [EncoderSetting settingWithValue:0 andDescription:@"Automatic"];
+        EncoderSetting *automatic = [EncoderSetting settingWithTag:0 andDescription:@"Automatic"];
         EncoderInfo *passthrough = [EncoderInfo encoderWithType:PassthroughEncoderType
                                                     andSettings:[NSArray arrayWithObject:automatic]];
         EncoderInfo *mp3 = [EncoderInfo encoderWithType:MP3EncoderType andSettings:
-                            [NSArray arrayWithObject:[EncoderSetting settingWithValue:0 andDescription:@"128kbps"]]];
+                            [NSArray arrayWithObjects:
+                             [EncoderSetting settingWithTag:MP3EncoderSettingHighestQuality andDescription:@"Highest Quality (320kbps)"],
+                             [EncoderSetting settingWithTag:MP3EncoderSettingVeryHighQuality andDescription:@"Very High Quality (~225 kbps)"],
+                             [EncoderSetting settingWithTag:MP3EncoderSettingGoodQuality andDescription:@"Good Quality (~165 kbps)"],
+                             [EncoderSetting settingWithTag:MP3EncoderSettingAcceptableQuality andDescription:@"Acceptable Quality (~115 kbps)"], nil]];
         EncoderInfo *vorbis = [EncoderInfo encoderWithType:VorbisEncoderType andSettings:
-                               [NSArray arrayWithObject:[EncoderSetting settingWithValue:0 andDescription:@"VBR ~128kbps"]]];
+                               [NSArray arrayWithObjects:
+                                [EncoderSetting settingWithTag:VorbisEncoderSettingVeryHighQuality andDescription:@"Very High Quality (~160 kbps)"],
+                                [EncoderSetting settingWithTag:VorbisEncoderSettingGoodQuality andDescription:@"Good Quality (~112 kbps)"],
+                                [EncoderSetting settingWithTag:VorbisEncoderSettingAcceptableQuality andDescription:@"Acceptable Quality (~80 kbps)"], nil]];
         EncoderInfo *flac = [EncoderInfo encoderWithType:FLACEncoderType
                                              andSettings:[NSArray arrayWithObject:automatic]];
         EncoderInfo *wave = [EncoderInfo encoderWithType:WaveEncoderType
@@ -52,16 +59,18 @@
     return self;
 }
 
-VorbisEncoder *CreateVorbisEncoder() {
-    VorbisEncoder *vorbisEncoder = [[VorbisEncoder alloc] init];
-    vorbisEncoder.includeAdvancedMetadata = [[NSUserDefaults standardUserDefaults] boolForKey:@"IncludeAdvancedMetadata"];
-    return vorbisEncoder;
-}
-
-MP3Encoder *CreateMP3Encoder() {
+MP3Encoder *CreateMP3Encoder(NSInteger setting) {
     MP3Encoder *mp3Encoder = [[MP3Encoder alloc] init];
+    mp3Encoder.setting = setting;
     mp3Encoder.includeAdvancedMetadata = [[NSUserDefaults standardUserDefaults] boolForKey:@"IncludeAdvancedMetadata"];
     return mp3Encoder;
+}
+
+VorbisEncoder *CreateVorbisEncoder(NSInteger setting) {
+    VorbisEncoder *vorbisEncoder = [[VorbisEncoder alloc] init];
+    vorbisEncoder.setting = setting;
+    vorbisEncoder.includeAdvancedMetadata = [[NSUserDefaults standardUserDefaults] boolForKey:@"IncludeAdvancedMetadata"];
+    return vorbisEncoder;
 }
 
 FLACEncoder *CreateFLACEncoder() {
@@ -73,13 +82,18 @@ FLACEncoder *CreateFLACEncoder() {
 - (id <Encoder>)encoderForMediaItem:(ITLibMediaItem *)item {
     if (item.mediaKind == ITLibMediaItemMediaKindSong && !item.isDRMProtected) {
         NSString *encoderTypeKey = defaultsKeyByKind[item.kind];
-        switch([[NSUserDefaults standardUserDefaults] integerForKey:encoderTypeKey]) {
+        NSInteger encoderType = [[NSUserDefaults standardUserDefaults] integerForKey:encoderTypeKey];
+        
+        NSString *encoderSettingKey = [encoderTypeKey stringByAppendingString:@"Setting"];
+        NSInteger encoderSetting = [[NSUserDefaults standardUserDefaults] integerForKey:encoderSettingKey];
+        
+        switch(encoderType) {
             case PassthroughEncoderType:
                 return [[Passthrough alloc] init];
             case MP3EncoderType:
-                return CreateMP3Encoder();
+                return CreateMP3Encoder(encoderSetting);
             case VorbisEncoderType:
-                return CreateVorbisEncoder();
+                return CreateVorbisEncoder(encoderSetting);
             case FLACEncoderType:
                 return CreateFLACEncoder();
             case WaveEncoderType:

@@ -29,8 +29,7 @@ static BOOL AddCommentToID3Tag(lame_global_flags *gfp, NSString *comment);
 - (id)init {
     self = [super init];
     if (self) {
-        self.bitRate = 128;
-        self.quality = 2;
+        self.setting = MP3EncoderSettingGoodQuality;
         self.includeAdvancedMetadata = YES;
     }
     return self;
@@ -51,7 +50,7 @@ static BOOL AddCommentToID3Tag(lame_global_flags *gfp, NSString *comment);
         return NO;
     }
     
-    FILE *outfile = fopen([[outputURLWithoutExtension URLByAppendingPathExtension:@"mp3"].path UTF8String], "wx");
+    FILE *outfile = fopen([[outputURLWithoutExtension URLByAppendingPathExtension:@"mp3"].path UTF8String], "w+x");
     if (!outfile) {
         ExtAudioFileDispose(infile);
         return NO;
@@ -62,8 +61,26 @@ static BOOL AddCommentToID3Tag(lame_global_flags *gfp, NSString *comment);
     
     lame_set_num_channels(gfp, item.channels);
     lame_set_in_samplerate(gfp, (int)item.sampleRate);
-    lame_set_brate(gfp, (int)self.bitRate);
-    lame_set_quality(gfp, (int)self.quality);
+    
+    switch (self.setting) {
+        case MP3EncoderSettingHighestQuality:
+            lame_set_brate(gfp, 320);
+            lame_set_quality(gfp, 2);
+            break;
+        case MP3EncoderSettingVeryHighQuality:
+            lame_set_VBR(gfp, vbr_default);
+            lame_set_VBR_quality(gfp, 1);
+            break;
+        case MP3EncoderSettingGoodQuality:
+            lame_set_VBR(gfp, vbr_default);
+            lame_set_VBR_quality(gfp, 4);
+            break;
+        case MP3EncoderSettingAcceptableQuality:
+            lame_set_VBR(gfp, vbr_default);
+            lame_set_VBR_quality(gfp, 6);
+            break;
+    }
+
     
     id3tag_init(gfp);
     id3tag_v2_only(gfp);
@@ -142,6 +159,7 @@ static BOOL AddCommentToID3Tag(lame_global_flags *gfp, NSString *comment);
     else
         ok = NO;
     
+    lame_mp3_tags_fid(gfp, outfile);
     lame_close(gfp);
     fclose(outfile);
     return ok;

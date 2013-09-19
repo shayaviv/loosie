@@ -29,7 +29,7 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
 - (id)init {
     self = [super init];
     if (self) {
-        self.VBRQuality = 0.4;
+        self.setting = VorbisEncoderSettingGoodQuality;
         self.includeAdvancedMetadata = YES;
     }
     return self;
@@ -100,13 +100,30 @@ static BOOL AddNumberFieldToComment(vorbis_comment *comment, const char *fieldNa
      
      *********************************************************************/
     
-    int ret = vorbis_encode_init_vbr(&vi, clientFormat.mChannelsPerFrame, clientFormat.mSampleRate, self.VBRQuality);
+    float vbrQuality = 0;
+    switch (self.setting) {
+        case VorbisEncoderSettingVeryHighQuality:
+            vbrQuality = .5;
+            break;
+        case VorbisEncoderSettingGoodQuality:
+            vbrQuality = .3;
+            break;
+        case VorbisEncoderSettingAcceptableQuality:
+            vbrQuality = .1;
+            break;
+    }
+    
+    int ret = vorbis_encode_init_vbr(&vi, clientFormat.mChannelsPerFrame, clientFormat.mSampleRate, vbrQuality);
     
     /* do not continue if setup failed; this can happen if we ask for a
      mode that libVorbis does not support (eg, too low a bitrate, etc,
      will return 'OV_EIMPL') */
     
-    if (ret) exit(1);
+    if (ret) {
+        ExtAudioFileDispose(infile);
+        fclose(outfile);
+        return NO;
+    }
     
     /* add a comment */
     vorbis_comment_init(&vc);
