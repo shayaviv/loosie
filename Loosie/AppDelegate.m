@@ -43,11 +43,12 @@ static const int kProgressSteps = 256;
         self.dockProgress.hidden = YES;
         [imageView addSubview:self.dockProgress];
         
+        self.conversionCenter = [[ConversionCenter alloc] init];
         self.preferencesWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindow"];
+        self.preferencesWindowController.conversionCenter = self.conversionCenter;
         
         ITLibrary *library = [ITLibrary libraryWithAPIVersion:@"1.0" error:nil];
         self.fileNamer = [[DefaultOutputFileNamer alloc] initWithLibrary:library];
-        self.conversionCenter = [[ConversionCenter alloc] init];
         self.playlists = library.allPlaylists;
         self.queue = [[NSOperationQueue alloc] init];
         self.queue.name = @"com.Loosie.SongsQueue";

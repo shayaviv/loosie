@@ -8,9 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "ConversionCenter.h"
+
 @interface PreferencesWindowController : NSWindowController
 
-@property (weak) IBOutlet NSUserDefaultsController *defaultsController;
+@property (strong, nonatomic) ConversionCenter *conversionCenter;
+
+@property (weak) IBOutlet NSArrayController *losslessEncoders;
+@property (weak) IBOutlet NSArrayController *aacEncoders;
+@property (weak) IBOutlet NSArrayController *mp3Encoders;
+
+@property (weak, nonatomic) IBOutlet NSUserDefaultsController *defaultsController;
 
 - (IBAction)ok:(id)sender;
 - (IBAction)cancel:(id)sender;

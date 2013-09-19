@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE03EEAA17EB07270008B695 /* EncoderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE03EEA917EB07270008B695 /* EncoderInfo.m */; };
+		FE03EEAD17EB08E40008B695 /* EncoderSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FE03EEAC17EB08E40008B695 /* EncoderSetting.m */; };
 		FE06834317E740E200BF3E0A /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE06834017E740E200BF3E0A /* PreferencesWindow.xib */; };
 		FE06834417E740E200BF3E0A /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE06834217E740E200BF3E0A /* PreferencesWindowController.m */; };
 		FE06834617E749CD00BF3E0A /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE06834517E749CD00BF3E0A /* Defaults.plist */; };
@@ -51,6 +53,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FE03EEA817EB07270008B695 /* EncoderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncoderInfo.h; sourceTree = "<group>"; };
+		FE03EEA917EB07270008B695 /* EncoderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncoderInfo.m; sourceTree = "<group>"; };
+		FE03EEAB17EB08E40008B695 /* EncoderSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncoderSetting.h; sourceTree = "<group>"; };
+		FE03EEAC17EB08E40008B695 /* EncoderSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncoderSetting.m; sourceTree = "<group>"; };
 		FE06834017E740E200BF3E0A /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		FE06834117E740E200BF3E0A /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		FE06834217E740E200BF3E0A /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
@@ -119,6 +125,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE03EEA717EB07050008B695 /* Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				FE03EEA817EB07270008B695 /* EncoderInfo.h */,
+				FE03EEA917EB07270008B695 /* EncoderInfo.m */,
+				FE03EEAB17EB08E40008B695 /* EncoderSetting.h */,
+				FE03EEAC17EB08E40008B695 /* EncoderSetting.m */,
+				FE3FEDC317DFAE2000DBFBA4 /* ConversionCenter.h */,
+				FE3FEDC417DFAE2000DBFBA4 /* ConversionCenter.m */,
+			);
+			name = Conversion;
+			sourceTree = "<group>";
+		};
 		FE2EC21B17DCA9F1007B157C = {
 			isa = PBXGroup;
 			children = (
@@ -163,11 +182,10 @@
 			children = (
 				FE9B77F917E0803300EE1EE2 /* File Naming */,
 				FE9B77FA17E0806400EE1EE2 /* Encoders */,
+				FE03EEA717EB07050008B695 /* Conversion */,
 				FE9B77FB17E0809700EE1EE2 /* Helpers */,
 				FE2EC23917DCA9F1007B157C /* AppDelegate.h */,
 				FE2EC23A17DCA9F1007B157C /* AppDelegate.m */,
-				FE3FEDC317DFAE2000DBFBA4 /* ConversionCenter.h */,
-				FE3FEDC417DFAE2000DBFBA4 /* ConversionCenter.m */,
 				FE2EC23C17DCA9F1007B157C /* MainMenu.xib */,
 				FE06834117E740E200BF3E0A /* PreferencesWindowController.h */,
 				FE06834217E740E200BF3E0A /* PreferencesWindowController.m */,
@@ -328,6 +346,8 @@
 				FE4A81AF17E26269007F3690 /* NSDateFormatter+ISO8601.m in Sources */,
 				FE06834417E740E200BF3E0A /* PreferencesWindowController.m in Sources */,
 				FED6899F17E7C270005ACA5C /* MP3Encoder.m in Sources */,
+				FE03EEAA17EB07270008B695 /* EncoderInfo.m in Sources */,
+				FE03EEAD17EB08E40008B695 /* EncoderSetting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

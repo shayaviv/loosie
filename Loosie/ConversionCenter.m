@@ -10,6 +10,8 @@
 
 #import <iTunesLibrary/ITLibMediaItem.h>
 
+#import "EncoderSetting.h"
+
 #import "Passthrough.h"
 #import "VorbisEncoder.h"
 #import "MP3Encoder.h"
@@ -23,6 +25,22 @@
 - (id)init {
     self = [super init];
     if (self) {
+        EncoderSetting *automatic = [EncoderSetting settingWithValue:0 andDescription:@"Automatic"];
+        EncoderInfo *passthrough = [EncoderInfo encoderWithType:PassthroughEncoderType
+                                                    andSettings:[NSArray arrayWithObject:automatic]];
+        EncoderInfo *mp3 = [EncoderInfo encoderWithType:MP3EncoderType andSettings:
+                            [NSArray arrayWithObject:[EncoderSetting settingWithValue:0 andDescription:@"128kbps"]]];
+        EncoderInfo *vorbis = [EncoderInfo encoderWithType:VorbisEncoderType andSettings:
+                               [NSArray arrayWithObject:[EncoderSetting settingWithValue:0 andDescription:@"VBR ~128kbps"]]];
+        EncoderInfo *flac = [EncoderInfo encoderWithType:FLACEncoderType
+                                             andSettings:[NSArray arrayWithObject:automatic]];
+        EncoderInfo *wave = [EncoderInfo encoderWithType:WaveEncoderType
+                                             andSettings:[NSArray arrayWithObject:automatic]];
+        
+        _losslessEncoders = [NSArray arrayWithObjects:passthrough, mp3, vorbis, flac, wave, nil];
+        _aacEncoders = [NSArray arrayWithObjects:passthrough, mp3, vorbis, wave, nil];
+        _mp3Encoders = [NSArray arrayWithObjects:passthrough, vorbis, wave, nil];
+        
         defaultsKeyByKind = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"LosslessTargetEncoder", @"Apple Lossless audio file",
                              @"LosslessTargetEncoder", @"WAV audio file",
@@ -56,15 +74,15 @@ FLACEncoder *CreateFLACEncoder() {
     if (item.mediaKind == ITLibMediaItemMediaKindSong && !item.isDRMProtected) {
         NSString *encoderTypeKey = defaultsKeyByKind[item.kind];
         switch([[NSUserDefaults standardUserDefaults] integerForKey:encoderTypeKey]) {
-            case 0:
+            case PassthroughEncoderType:
                 return [[Passthrough alloc] init];
-            case 1:
-                return CreateVorbisEncoder();
-            case 2:
+            case MP3EncoderType:
                 return CreateMP3Encoder();
-            case 3:
+            case VorbisEncoderType:
+                return CreateVorbisEncoder();
+            case FLACEncoderType:
                 return CreateFLACEncoder();
-            case 4:
+            case WaveEncoderType:
                 return [[WaveEncoder alloc] init];
         }
     }

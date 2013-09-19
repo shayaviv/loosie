@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 
 #import "Encoder.h"
+#import "EncoderInfo.h"
 
 @class ITLibMediaItem;
 
 @interface ConversionCenter : NSObject
 
-@property (readonly, nonatomic) NSDictionary *allEncoders;
+@property (readonly, nonatomic) NSArray *losslessEncoders;
+@property (readonly, nonatomic) NSArray *aacEncoders;
+@property (readonly, nonatomic) NSArray *mp3Encoders;
 
 - (id <Encoder>)encoderForMediaItem:(ITLibMediaItem *)item;
 

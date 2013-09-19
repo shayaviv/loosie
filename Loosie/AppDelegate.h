@@ -10,12 +10,13 @@
 
 @protocol OutputFileNamer;
 @class ConversionCenter;
+@class PreferencesWindowController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign, nonatomic) NSDockTile *dockTile;
 @property (strong, nonatomic) NSProgressIndicator *dockProgress;
-@property (strong, nonatomic) NSWindowController *preferencesWindowController;
+@property (strong, nonatomic) PreferencesWindowController *preferencesWindowController;
 
 @property (assign, nonatomic) IBOutlet NSWindow *window;
 @property (weak, nonatomic) IBOutlet NSArrayController *playlistsController;
