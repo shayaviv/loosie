@@ -36,4 +36,6 @@
 - (IBAction)convert:(id)sender;
 - (IBAction)stop:(id)sender;
 
+- (void)modalAlertWithTitle:(NSString *)title andDescription:(NSString *)description;
+
 @end

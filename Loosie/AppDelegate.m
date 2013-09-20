@@ -27,7 +27,7 @@ static const int kProgressSteps = 256;
 
 - (id)init {
     self = [super init];
-    if (self) {       
+    if (self) {
         self.dockTile = [NSApp dockTile];
         NSImageView *imageView = [[NSImageView alloc] init];
         imageView.image = [NSApp applicationIconImage];
@@ -89,9 +89,9 @@ static const int kProgressSteps = 256;
     }];
 }
 
-- (IBAction)convert:(id)sender {  
+- (IBAction)convert:(id)sender {
     if (!self.fileNamer.outputDirectory) {
-        [[NSAlert alertWithMessageText:@"No Output Directory" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"You must choose an output directory first."] beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+        [self modalAlertWithTitle:@"No Output Directory" andDescription:@"You must choose an output directory first."];
         return;
     }
     
@@ -116,8 +116,11 @@ static const int kProgressSteps = 256;
             int32_t localEnumeratedCount = OSAtomicIncrement32(&enumeratedCount);
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.progress = (double)localEnumeratedCount / itemsCount;
-                if (localEnumeratedCount == itemsCount)
-                    [[NSAlert alertWithMessageText:@"Put Back That Loosie!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"%d/%d songs have been successfully converted.", convertedCount, convertedCount + errorCount] beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+                if (localEnumeratedCount == itemsCount) {
+                    [self modalAlertWithTitle:@"Put Back That Loosie!" andDescription:errorCount
+                     ? [NSString stringWithFormat:@"%d/%d songs have been successfully converted.", convertedCount, convertedCount + errorCount]
+                     : [NSString stringWithFormat:@"%d songs have been successfully converted.", convertedCount]];
+                }
             });
         }];
 }
@@ -128,7 +131,7 @@ static const int kProgressSteps = 256;
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.progress != 1) {
             self.progress = 1;
-            [[NSAlert alertWithMessageText:@"Conversion Stopped" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Some songs may have been converted."] beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+            [self modalAlertWithTitle:@"Conversion Stopped" andDescription:@"Some songs have been converted."];
         }
     });
 }
@@ -158,6 +161,10 @@ static const int kProgressSteps = 256;
     [_dockTile display];
     
     _progress = newProgress;
+}
+
+- (void)modalAlertWithTitle:(NSString *)title andDescription:(NSString *)description {
+    [[NSAlert alertWithMessageText:title defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"%@", description] beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
 }
 
 @end
