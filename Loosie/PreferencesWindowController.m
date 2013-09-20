@@ -28,6 +28,28 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self loadFromDefaults];
+}
+
+- (void)windowDidLoad {
+    [super windowDidLoad];
+    self.defaultsController.appliesImmediately = false;
+    
+}
+
+- (IBAction)ok:(id)sender {
+    [self close];
+    [self saveToDefaults];
+}
+
+- (IBAction)cancel:(id)sender {
+    [self close];
+    [self loadFromDefaults];
+}
+
+- (void)loadFromDefaults {
+    [self.defaultsController revert:self];
+    
     NSUInteger losslessEncoderIndex = [self.conversionCenter.losslessEncoders indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         return [obj encoderType] == [self.defaultsController.defaults integerForKey:@"LosslessTargetEncoder"];
     }];
@@ -53,13 +75,7 @@
     }];
 }
 
-- (void)windowDidLoad {
-    [super windowDidLoad];
-    self.defaultsController.appliesImmediately = false;
-    
-}
-
-- (IBAction)ok:(id)sender {
+- (void)saveToDefaults {
     [self.defaultsController.defaults setInteger:[self.losslessEncoders.selectedObjects[0] encoderType] forKey:@"LosslessTargetEncoder"];
     [self.defaultsController.defaults setInteger:[self.losslessEncoderSettings.selectedObjects[0] tag] forKey:@"LosslessTargetEncoderSetting"];
     
@@ -70,12 +86,6 @@
     [self.defaultsController.defaults setInteger:[self.mp3EncoderSettings.selectedObjects[0] tag] forKey:@"MP3TargetEncoderSetting"];
     
     [self.defaultsController save:self];
-    [self close];
-}
-
-- (IBAction)cancel:(id)sender {
-    [self.defaultsController revert:self];
-    [self close];
 }
 
 @end

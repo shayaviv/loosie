@@ -28,4 +28,7 @@
 - (IBAction)ok:(id)sender;
 - (IBAction)cancel:(id)sender;
 
+- (void)loadFromDefaults;
+- (void)saveToDefaults;
+
 @end
