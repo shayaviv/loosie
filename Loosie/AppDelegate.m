@@ -17,6 +17,7 @@
 
 #import "PreferencesWindowController.h"
 #import "DefaultOutputFileNamer.h"
+#import "ArtworkExtractor.h"
 #import "ConversionCenter.h"
 
 static const int kProgressSteps = 256;
@@ -105,9 +106,14 @@ static const int kProgressSteps = 256;
             id <Encoder> encoder = [self.conversionCenter encoderForMediaItem:item];
             if (encoder) {
                 NSURL* outputURL = [self.fileNamer URLWithoutExtensionForMediaItem:item];
+                
                 if ([[NSFileManager defaultManager] createDirectoryAtURL:[outputURL URLByDeletingLastPathComponent]
                                              withIntermediateDirectories:YES attributes:nil error:nil]
-                    && [encoder encode:item outputURL:outputURL error:nil])
+                    && [encoder encode:item outputURL:outputURL error:nil]
+                    && (![[NSUserDefaults standardUserDefaults] boolForKey:@"ExtractAlbumArtwork"] ||
+                        !item.artworkAvailable || [ArtworkExtractor saveJPEGofArtwork:item.artwork
+                                                  atURL:[[outputURL URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"cover.jpg"]
+                                                   maxPixelsWide:500]))
                     OSAtomicIncrement32(&convertedCount);
                 else
                     OSAtomicIncrement32(&errorCount);

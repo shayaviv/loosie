@@ -12,6 +12,7 @@
 		FE06834317E740E200BF3E0A /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE06834017E740E200BF3E0A /* PreferencesWindow.xib */; };
 		FE06834417E740E200BF3E0A /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE06834217E740E200BF3E0A /* PreferencesWindowController.m */; };
 		FE06834617E749CD00BF3E0A /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE06834517E749CD00BF3E0A /* Defaults.plist */; };
+		FE080D4617F8A92F00ED8DB9 /* ArtworkExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = FE080D4517F8A92F00ED8DB9 /* ArtworkExtractor.m */; };
 		FE2EC22817DCA9F1007B157C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2EC22717DCA9F1007B157C /* Cocoa.framework */; };
 		FE2EC23217DCA9F1007B157C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE2EC23017DCA9F1007B157C /* InfoPlist.strings */; };
 		FE2EC23417DCA9F1007B157C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2EC23317DCA9F1007B157C /* main.m */; };
@@ -61,6 +62,8 @@
 		FE06834117E740E200BF3E0A /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		FE06834217E740E200BF3E0A /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		FE06834517E749CD00BF3E0A /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		FE080D4417F8A92F00ED8DB9 /* ArtworkExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtworkExtractor.h; sourceTree = "<group>"; };
+		FE080D4517F8A92F00ED8DB9 /* ArtworkExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtworkExtractor.m; sourceTree = "<group>"; };
 		FE2EC22417DCA9F1007B157C /* Loosie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loosie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE2EC22717DCA9F1007B157C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FE2EC22A17DCA9F1007B157C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,15 @@
 			name = Conversion;
 			sourceTree = "<group>";
 		};
+		FE080D4717F8D65500ED8DB9 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				FE080D4417F8A92F00ED8DB9 /* ArtworkExtractor.h */,
+				FE080D4517F8A92F00ED8DB9 /* ArtworkExtractor.m */,
+			);
+			name = Artwork;
+			sourceTree = "<group>";
+		};
 		FE2EC21B17DCA9F1007B157C = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				FE9B77F917E0803300EE1EE2 /* File Naming */,
+				FE080D4717F8D65500ED8DB9 /* Artwork */,
 				FE9B77FA17E0806400EE1EE2 /* Encoders */,
 				FE03EEA717EB07050008B695 /* Conversion */,
 				FE9B77FB17E0809700EE1EE2 /* Helpers */,
@@ -348,6 +361,7 @@
 				FED6899F17E7C270005ACA5C /* MP3Encoder.m in Sources */,
 				FE03EEAA17EB07270008B695 /* EncoderInfo.m in Sources */,
 				FE03EEAD17EB08E40008B695 /* EncoderSetting.m in Sources */,
+				FE080D4617F8A92F00ED8DB9 /* ArtworkExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
